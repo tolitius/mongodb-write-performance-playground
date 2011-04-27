@@ -3,7 +3,7 @@
 + A simple playground where ( for now ) a mongo-java-driver used to INSERT X number of "some" records into MongoDB.
 + This simple project is _meant_ to be "cloned" and changed according to what you really need: e.g. change records, indexes, collections, number of records, etc..
 
-For "As Is" structure / configs, running it on Mac Book Pro i7 2.8 GHz.. Here is the results I got:
+For "As Is" structure / configs, running it on Mac Book Pro i7 2.8 GHz.. Here are the results I got:
 
 ## 10,000 ( Ten Thousand ) records
 
