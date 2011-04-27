@@ -5,9 +5,12 @@ import org.dotkam.record.VeryImportantRecord;
 import org.junit.*;
 import org.springframework.util.StopWatch;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class WritePerformanceTest {
 
-    private static final int HU_MONGO_US_NUMBER_OF_RECORDS = 100000;
+    private static final int HU_MONGO_US_NUMBER_OF_RECORDS = 1000000;
 
     private DB db;
     private DBCollection veryImportantRecords;
@@ -31,9 +34,9 @@ public class WritePerformanceTest {
     }
 
     @Test
-    public void insertCustomerOttoNormal() {
+    public void insertRecordsOneByOne() {
 
-        StopWatch timer = new StopWatch("-- MongoDB Power Watch --");
+        StopWatch timer = new StopWatch("-- MongoDB Insert One By One --");
 
         timer.start( "adding " + HU_MONGO_US_NUMBER_OF_RECORDS + " number of records.." );
 
@@ -44,6 +47,27 @@ public class WritePerformanceTest {
             veryImportantRecords.setObjectClass( VeryImportantRecord.class );
             veryImportantRecords.insert( veryImportantRecord );
         }
+
+        timer.stop();
+
+        System.out.println( timer.prettyPrint() );
+    }
+
+    @Test
+    public void insertAllRecordsAtOnce() {
+
+        StopWatch timer = new StopWatch("-- MongoDB Insert All At Once --");
+
+        timer.start( "adding " + HU_MONGO_US_NUMBER_OF_RECORDS + " number of records.." );
+
+        List<DBObject> records = new ArrayList<DBObject>();
+
+        for ( int i = 0; i < HU_MONGO_US_NUMBER_OF_RECORDS; i++ ) {
+            records.add( createVeryImportantRecord( i ) );
+        }
+
+        veryImportantRecords.setObjectClass( VeryImportantRecord.class );
+        veryImportantRecords.insert( records );
 
         timer.stop();
 
