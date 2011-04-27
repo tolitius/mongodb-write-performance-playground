@@ -1,7 +1,7 @@
 # What is "MongoDB Write Performance Playground"? ##
 
-+ A simple playground where ( for now ) a mongo-java-driver used to INSERT X number of "some" records into MongoDB.
-+ This simple project is _meant_ to be "cloned" and changed according to what you really need: e.g. change records, indexes, collections, number of records, etc..
++ A simple playground where ( for now ) a mongo-java-driver is used to INSERT X number of "some" records into MongoDB.
++ This simple project is _meant_ to be "cloned" and changed to reflect what _you_ really need: e.g. change records, indexes, collections, number of records, etc..
 
 For "As Is" structure / configs, running it on Mac Book Pro i7 2.8 GHz.. Here are the results I got:
 
