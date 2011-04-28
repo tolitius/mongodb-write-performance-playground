@@ -19,6 +19,12 @@ For "As Is" structure / configs, running it on Mac Book Pro i7 2.8 GHz.. Here ar
     -----------------------------------------
     00185  100%  adding 10000 number of records..
 
+    StopWatch '-- MongoDB Insert All With Partitioning [ grid size = 3 ] --': running time (millis) = 359
+    -----------------------------------------
+    ms     %     Task name
+    -----------------------------------------
+    00359  100%  adding 10000 number of documents..
+
 ## 100,000 ( One Hundred Thousand ) records
 
     StopWatch '-- MongoDB Insert One By One --': running time (millis) = 3692
@@ -33,6 +39,12 @@ For "As Is" structure / configs, running it on Mac Book Pro i7 2.8 GHz.. Here ar
     -----------------------------------------
     02038  100%  adding 100000 number of records..
 
+    StopWatch '-- MongoDB Insert All With Partitioning [ grid size = 3 ] --': running time (millis) = 1313
+    -----------------------------------------
+    ms     %     Task name
+    -----------------------------------------
+    01313  100%  adding 100000 number of documents..
+
 ## 1,000,000 ( One Million ) records
 
     StopWatch '-- MongoDB Insert One By One --': running time (millis) = 31157
@@ -46,6 +58,12 @@ For "As Is" structure / configs, running it on Mac Book Pro i7 2.8 GHz.. Here ar
     ms     %     Task name
     -----------------------------------------
     20238  100%  adding 1000000 number of records..
+
+    StopWatch '-- MongoDB Insert All With Partitioning [ grid size = 3 ] --': running time (millis) = 15865
+    -----------------------------------------
+    ms     %     Task name
+    -----------------------------------------
+    15865  100%  adding 1000000 number of documents..
 
 ### The numbers above can be surely improved
 

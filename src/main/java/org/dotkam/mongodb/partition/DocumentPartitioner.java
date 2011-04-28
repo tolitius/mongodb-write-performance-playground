@@ -14,22 +14,25 @@ public class DocumentPartitioner<DOCUMENT> {
         int numberOfDocuments = documents.size();
 
         int min = 0;
-        int max = numberOfDocuments;
+        int max = numberOfDocuments - 1;
 
-        int numberOfPartitions = ( max - min ) / gridSize + 1;
+        int partitionSize = ( max - min ) / gridSize + 1;
 
         int partitionNumber = 0;
         int start = min;
-        int end = start + numberOfPartitions - 1;
+        int end = start + partitionSize - 1;
 
         while ( start <= max ) {
 
+            //System.out.println( "partition: " + partitionNumber + " from: " + start + ", to: " + end );
+
             partitions.put( partitionNumber, documents.subList( start, end ) );
 
-            if (end >= max) { end = max; }
+            start += partitionSize;
+            end += partitionSize;
 
-            start += numberOfPartitions;
-            end += numberOfPartitions;
+            if ( end >= max ) { end = max; }
+
             partitionNumber++;
         }
 

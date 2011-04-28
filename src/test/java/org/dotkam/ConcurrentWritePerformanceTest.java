@@ -14,8 +14,8 @@ import java.util.List;
 
 public class ConcurrentWritePerformanceTest {
 
-    private static final int HU_MONGO_US_NUMBER_OF_RECORDS = 100000;
-    private static final int GRID_SIZE = 5;
+    private static final int HU_MONGO_US_NUMBER_OF_RECORDS = 1000000;
+    private static final int GRID_SIZE = 3;
 
     private static final String DB_NAME = "writePerformanceDumbDb";
     private static final String COLLECTION_NAME = "vipRecords";
@@ -37,7 +37,7 @@ public class ConcurrentWritePerformanceTest {
     @Test
     public void insertRecordsWithPartitioning() {
 
-        StopWatch timer = new StopWatch("-- MongoDB Insert All With Partitioning --");
+        StopWatch timer = new StopWatch("-- MongoDB Insert All With Partitioning [ grid size = " + GRID_SIZE + " ] --");
 
         timer.start( "adding " + HU_MONGO_US_NUMBER_OF_RECORDS + " number of documents.." );
 
