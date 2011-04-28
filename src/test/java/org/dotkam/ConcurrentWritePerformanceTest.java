@@ -1,75 +1,53 @@
 package org.dotkam;
 
 import com.mongodb.*;
+import org.dotkam.mongodb.concurrent.MongoDocumentWriter;
+import org.dotkam.mongodb.datasource.CollectionDataSource;
 import org.dotkam.record.VeryImportantRecord;
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.springframework.util.StopWatch;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class WritePerformanceTest {
+public class ConcurrentWritePerformanceTest {
 
     private static final int HU_MONGO_US_NUMBER_OF_RECORDS = 100000;
+    private static final int GRID_SIZE = 5;
 
-    private DB db;
-    private DBCollection veryImportantRecords;
+    private static final String DB_NAME = "writePerformanceDumbDb";
+    private static final String COLLECTION_NAME = "vipRecords";
+
+    private MongoDocumentWriter documentWriter;
 
     @Before
     public void createDbAndCollection() throws Exception {
 
-        Mongo mongo = new Mongo();
-        db = mongo.getDB( "writePerformanceDumbDb" );
-
-        veryImportantRecords = db.getCollection( "vipRecords" );
-        veryImportantRecords.remove( new BasicDBObject() );
-
-        //veryImportantRecords.ensureIndex( new BasicDBObject( "_id", 1 ) );
-        //veryImportantRecords.createIndex( new BasicDBObject( "id", 1 ) );
+        CollectionDataSource dataSource = new CollectionDataSource( DB_NAME, COLLECTION_NAME );
+        documentWriter = new MongoDocumentWriter( dataSource, GRID_SIZE, VeryImportantRecord.class );
     }
 
     @After
-    public void dropDataBase() {
-        db.dropDatabase();
+    public void dropDataBase() throws Exception {
+        ( new Mongo() ).getDB( DB_NAME ).dropDatabase();
     }
 
     @Test
-    @Ignore
-    public void insertRecordsOneByOne() {
+    public void insertRecordsWithPartitioning() {
 
-        StopWatch timer = new StopWatch("-- MongoDB Insert One By One --");
+        StopWatch timer = new StopWatch("-- MongoDB Insert All With Partitioning --");
 
-        timer.start( "adding " + HU_MONGO_US_NUMBER_OF_RECORDS + " number of records.." );
+        timer.start( "adding " + HU_MONGO_US_NUMBER_OF_RECORDS + " number of documents.." );
 
-        for ( int i = 0; i < HU_MONGO_US_NUMBER_OF_RECORDS; i++ ) {
-
-            VeryImportantRecord veryImportantRecord = createVeryImportantRecord( i );
-
-            veryImportantRecords.setObjectClass( VeryImportantRecord.class );
-            veryImportantRecords.insert( veryImportantRecord );
-
-        }
-
-        timer.stop();
-
-        System.out.println( timer.prettyPrint() );
-    }
-
-    @Test
-    public void insertAllRecordsAtOnce() {
-
-        StopWatch timer = new StopWatch("-- MongoDB Insert All At Once --");
-
-        timer.start( "adding " + HU_MONGO_US_NUMBER_OF_RECORDS + " number of records.." );
-
-        List<DBObject> records = new ArrayList<DBObject>();
+        List<DBObject> documents = new ArrayList<DBObject>();
 
         for ( int i = 0; i < HU_MONGO_US_NUMBER_OF_RECORDS; i++ ) {
-            records.add( createVeryImportantRecord( i ) );
+            documents.add( createVeryImportantRecord( i ) );
         }
 
-        veryImportantRecords.setObjectClass( VeryImportantRecord.class );
-        veryImportantRecords.insert( records );
+        documentWriter.write( documents );
 
         timer.stop();
 
