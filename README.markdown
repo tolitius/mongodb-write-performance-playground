@@ -81,7 +81,7 @@ This creation is _meant_ to be "cloned" and changed to reflect what _you_ really
     -----------------------------------------
     15865  100%  adding 1000000 number of documents..
 
-    StopWatch '-- MongoDB Partitioning / Multiple Hosts [ grid size = 10 ] --': running time (millis) = 10639
+    StopWatch '-- MongoDB Partitioning / Multiple Hosts [ grid size = 18 / host number 6 ] --': running time (millis) = 10639
     -----------------------------------------
     ms     %     Task name
     -----------------------------------------

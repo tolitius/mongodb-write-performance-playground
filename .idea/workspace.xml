@@ -15,10 +15,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4db0f60-982d-4bc9-ba1e-d00332e7c74e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.markdown" afterPath="$PROJECT_DIR$/README.markdown" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/dotkam/record/VeryImportantRecord.java" afterPath="$PROJECT_DIR$/src/main/java/org/dotkam/record/VeryImportantRecord.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteSingleHostPerformanceTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteSingleHostPerformanceTest.java" />
     </list>
     <ignored path="mongodb-write-performance-playground.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -148,7 +145,7 @@
       <file leaf-file-name="README.markdown" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.markdown">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="100" column="141" selection-start="4408" selection-end="4408" vertical-scroll-proportion="4.466501">
+            <state line="87" column="7" selection-start="3595" selection-end="3595" vertical-scroll-proportion="0.55334985">
               <folding />
             </state>
           </provider>
@@ -881,7 +878,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.markdown">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="100" column="141" selection-start="4408" selection-end="4408" vertical-scroll-proportion="4.466501">
+        <state line="87" column="7" selection-start="3595" selection-end="3595" vertical-scroll-proportion="0.55334985">
           <folding />
         </state>
       </provider>
