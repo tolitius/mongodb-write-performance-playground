@@ -1,6 +1,8 @@
 package org.dotkam;
 
+import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
+import com.mongodb.Mongo;
 import org.dotkam.mongodb.concurrent.MongoDocumentWriter;
 import org.dotkam.mongodb.concurrent.MongoMultipleHostDocumentWriter;
 import org.dotkam.mongodb.concurrent.MongoSingleHostDocumentWriter;
@@ -16,10 +18,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static junit.framework.Assert.assertEquals;
+
 public class ConcurrentWriteMultipleHostPerformanceTest {
 
     private static final int HU_MONGO_US_NUMBER_OF_RECORDS = 1000000;
-    private static final int GRID_SIZE = 20;
+    private static final int GRID_SIZE = 15;
+    private static final int NUMBER_OF_HOSTS = 5;
+
+    // Assumption is hosts are listening on sequential port numbers: e.g. 10000, 10001, 10002, 10003...
+    private static final int FIRST_HOST_PORT = 10000;
 
     private static final String DB_NAME = "writePerformanceDumbDb";
     private static final String COLLECTION_NAME = "vipRecords";
@@ -30,22 +38,15 @@ public class ConcurrentWriteMultipleHostPerformanceTest {
     private MongoDocumentWriter documentWriter;
 
     @Before
-    public void createDbAndCollection() throws Exception {
+    public void connectToHostsAndDropCollections() throws Exception {
 
         List<CollectionDataSource> multipleHosts = new ArrayList<CollectionDataSource>();
-        multipleHosts.add( new CollectionDataSource( DB_NAME, COLLECTION_NAME, "localhost", 10000 ) );
-        multipleHosts.add( new CollectionDataSource( DB_NAME, COLLECTION_NAME, "localhost", 10001 ) );
-        multipleHosts.add( new CollectionDataSource( DB_NAME, COLLECTION_NAME, "localhost", 10002 ) );
-        multipleHosts.add( new CollectionDataSource( DB_NAME, COLLECTION_NAME, "localhost", 10003 ) );
-        multipleHosts.add( new CollectionDataSource( DB_NAME, COLLECTION_NAME, "localhost", 10004 ) );
-        multipleHosts.add( new CollectionDataSource( DB_NAME, COLLECTION_NAME, "localhost", 10005 ) );
-        multipleHosts.add( new CollectionDataSource( DB_NAME, COLLECTION_NAME, "localhost", 10006 ) );
-        multipleHosts.add( new CollectionDataSource( DB_NAME, COLLECTION_NAME, "localhost", 10007 ) );
-        multipleHosts.add( new CollectionDataSource( DB_NAME, COLLECTION_NAME, "localhost", 10008 ) );
-        multipleHosts.add( new CollectionDataSource( DB_NAME, COLLECTION_NAME, "localhost", 10009 ) );
+        for ( int i = 0; i < NUMBER_OF_HOSTS; i++) {
 
-        for ( CollectionDataSource host: multipleHosts ) {
+            CollectionDataSource host = new CollectionDataSource(
+                    DB_NAME, COLLECTION_NAME, "localhost", FIRST_HOST_PORT + i );
             host.getCollection().drop();
+            multipleHosts.add( host );
         }
 
         documentWriter = new MongoMultipleHostDocumentWriter(  VeryImportantRecord.class,
@@ -62,7 +63,8 @@ public class ConcurrentWriteMultipleHostPerformanceTest {
     @Test
     public void insertRecordsWithPartitioning() throws Exception {
 
-        StopWatch timer = new StopWatch("-- MongoDB Partitioning / Multiple Hosts [ grid size = " + GRID_SIZE + " ] --");
+        StopWatch timer = new StopWatch("-- MongoDB Partitioning / Multiple Hosts " +
+                "[ grid size = " + GRID_SIZE + " / number of hosts = " + NUMBER_OF_HOSTS + " ] --");
 
         timer.start( "adding " + HU_MONGO_US_NUMBER_OF_RECORDS + " number of documents.." );
 
