@@ -15,16 +15,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4db0f60-982d-4bc9-ba1e-d00332e7c74e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/MongoMultipleHostDocumentWriter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/MongoSingleHostDocumentWriter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteMultipleHostPerformanceTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/MongoInsertTask.java" afterPath="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/task/MongoInsertTask.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/datasource/CollectionDatasource.java" afterPath="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/datasource/CollectionDataSource.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWritePerformanceTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteSingleHostPerformanceTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/MongoDocumentWriter.java" afterPath="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/MongoDocumentWriter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/dotkam/record/VeryImportantRecord.java" afterPath="$PROJECT_DIR$/src/main/java/org/dotkam/record/VeryImportantRecord.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/dotkam/WritePerformanceTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/dotkam/WritePerformanceTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.markdown" afterPath="$PROJECT_DIR$/README.markdown" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteMultipleHostPerformanceTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteMultipleHostPerformanceTest.java" />
     </list>
     <ignored path="mongodb-write-performance-playground.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -143,25 +136,25 @@
       <file leaf-file-name="ConcurrentWriteSingleHostPerformanceTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteSingleHostPerformanceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="26" selection-start="1100" selection-end="1100" vertical-scroll-proportion="0.0">
+            <state line="36" column="71" selection-start="1266" selection-end="1266" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConcurrentWriteMultipleHostPerformanceTest.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ConcurrentWriteMultipleHostPerformanceTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteMultipleHostPerformanceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="42" selection-start="778" selection-end="778" vertical-scroll-proportion="-0.5192308">
+            <state line="64" column="82" selection-start="2995" selection-end="3033" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MongoInsertTask.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/task/MongoInsertTask.java">
+      <file leaf-file-name="README.markdown" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.markdown">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="42" selection-start="809" selection-end="809" vertical-scroll-proportion="0.0">
+            <state line="67" column="71" selection-start="2966" selection-end="2966" vertical-scroll-proportion="0.5980149">
               <folding />
             </state>
           </provider>
@@ -192,7 +185,6 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/MultiThreadedMongoDbCollectionWriter.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/datasource/CollectionDatasource.java" />
-        <option value="$PROJECT_DIR$/README.markdown" />
         <option value="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/partition/DocumentPartitioner.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/partition/GridSizeDocumentPartitioner.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/dotkam/WritePerformanceTest.java" />
@@ -203,9 +195,10 @@
         <option value="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWritePerformanceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/MongoSingleHostDocumentWriter.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/MongoMultipleHostDocumentWriter.java" />
-        <option value="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteSingleHostPerformanceTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteMultipleHostsPerformanceTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteSingleHostPerformanceTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteMultipleHostPerformanceTest.java" />
+        <option value="$PROJECT_DIR$/README.markdown" />
       </list>
     </option>
   </component>
@@ -571,6 +564,34 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
+    <configuration default="false" name="ConcurrentWriteSingleHostPerformanceTest" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false">
+        <pattern>
+          <option name="PATTERN" value="org.dotkam.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="mongodb-write-performance-playground" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="org.dotkam" />
+      <option name="MAIN_CLASS_NAME" value="org.dotkam.ConcurrentWriteSingleHostPerformanceTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -647,11 +668,12 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="JUnit.WritePerformanceTest" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.WritePerformanceTest.insertAllRecordsAtOnce" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.ConcurrentWriteSingleHostPerformanceTest.insertRecordsWithPartitioning" />
       <item index="3" class="java.lang.String" itemvalue="JUnit.ConcurrentWriteMultipleHostPerformanceTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.ConcurrentWriteSingleHostPerformanceTest" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -701,7 +723,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27579618" sideWeight="0.5871671" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41283292" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41283292" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -773,13 +795,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.markdown">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="16" selection-start="2034" selection-end="2034" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/org/dotkam/WritePerformanceTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="8" selection-start="675" selection-end="675" vertical-scroll-proportion="0.0">
@@ -824,6 +839,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/MongoMultipleHostDocumentWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="44" selection-start="450" selection-end="481" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/MongoSingleHostDocumentWriter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="74" selection-start="551" selection-end="551" vertical-scroll-proportion="0.0">
@@ -833,7 +855,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteSingleHostPerformanceTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="26" selection-start="1100" selection-end="1100" vertical-scroll-proportion="0.0">
+        <state line="36" column="71" selection-start="1266" selection-end="1266" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -845,16 +867,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/MongoMultipleHostDocumentWriter.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteMultipleHostPerformanceTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="44" selection-start="450" selection-end="481" vertical-scroll-proportion="0.0">
+        <state line="64" column="82" selection-start="2995" selection-end="3033" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteMultipleHostPerformanceTest.java">
+    <entry file="file://$PROJECT_DIR$/README.markdown">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="42" selection-start="778" selection-end="778" vertical-scroll-proportion="-0.5192308">
+        <state line="67" column="71" selection-start="2966" selection-end="2966" vertical-scroll-proportion="0.5980149">
           <folding />
         </state>
       </provider>

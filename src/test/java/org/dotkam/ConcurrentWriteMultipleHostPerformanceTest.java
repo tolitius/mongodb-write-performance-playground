@@ -19,7 +19,7 @@ import java.util.List;
 public class ConcurrentWriteMultipleHostPerformanceTest {
 
     private static final int HU_MONGO_US_NUMBER_OF_RECORDS = 1000000;
-    private static final int GRID_SIZE = 2;
+    private static final int GRID_SIZE = 20;
 
     private static final String DB_NAME = "writePerformanceDumbDb";
     private static final String COLLECTION_NAME = "vipRecords";
@@ -39,6 +39,10 @@ public class ConcurrentWriteMultipleHostPerformanceTest {
         multipleHosts.add( new CollectionDataSource( DB_NAME, COLLECTION_NAME, "localhost", 10003 ) );
         multipleHosts.add( new CollectionDataSource( DB_NAME, COLLECTION_NAME, "localhost", 10004 ) );
         multipleHosts.add( new CollectionDataSource( DB_NAME, COLLECTION_NAME, "localhost", 10005 ) );
+        multipleHosts.add( new CollectionDataSource( DB_NAME, COLLECTION_NAME, "localhost", 10006 ) );
+        multipleHosts.add( new CollectionDataSource( DB_NAME, COLLECTION_NAME, "localhost", 10007 ) );
+        multipleHosts.add( new CollectionDataSource( DB_NAME, COLLECTION_NAME, "localhost", 10008 ) );
+        multipleHosts.add( new CollectionDataSource( DB_NAME, COLLECTION_NAME, "localhost", 10009 ) );
 
         for ( CollectionDataSource host: multipleHosts ) {
             host.getCollection().drop();
@@ -58,7 +62,7 @@ public class ConcurrentWriteMultipleHostPerformanceTest {
     @Test
     public void insertRecordsWithPartitioning() throws Exception {
 
-        StopWatch timer = new StopWatch("-- MongoDB Insert All With Partitioning [ grid size = " + GRID_SIZE + " ] --");
+        StopWatch timer = new StopWatch("-- MongoDB Partitioning / Multiple Hosts [ grid size = " + GRID_SIZE + " ] --");
 
         timer.start( "adding " + HU_MONGO_US_NUMBER_OF_RECORDS + " number of documents.." );
 

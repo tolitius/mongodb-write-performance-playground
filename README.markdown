@@ -65,6 +65,12 @@ For "As Is" structure / configs, running it on Mac Book Pro i7 2.8 GHz.. Here ar
     -----------------------------------------
     15865  100%  adding 1000000 number of documents..
 
+    StopWatch '-- MongoDB Partitioning / Multiple Hosts [ grid size = 10 ] --': running time (millis) = 10639
+    -----------------------------------------
+    ms     %     Task name
+    -----------------------------------------
+    10639  100%  adding 1000000 number of documents..
+
 ### The numbers above can be surely improved
 
  By using more clients [ I am using one ], having more RAM, using C driver, etc..
