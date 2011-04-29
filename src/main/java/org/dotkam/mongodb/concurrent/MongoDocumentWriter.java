@@ -3,6 +3,7 @@ package org.dotkam.mongodb.concurrent;
 import com.mongodb.DBObject;
 import org.dotkam.mongodb.datasource.CollectionDataSource;
 import org.dotkam.mongodb.partition.DocumentPartitioner;
+import org.dotkam.mongodb.partition.GridSizeDocumentPartitioner;
 
 import java.util.HashSet;
 import java.util.List;
@@ -17,13 +18,17 @@ public class MongoDocumentWriter {
     private CollectionDataSource collectionDataSource;
     private int gridSize;
 
-    // just so we don't need to calculate it from _generics_ at runtime => every millisecond counts
+    // just so we don't need to calculate the class from _generics_ at runtime => every millisecond counts
     private Class documentClass;
+    private DocumentPartitioner<Integer> documentPartitioner;
 
-    public MongoDocumentWriter( CollectionDataSource collectionDataSource, int gridSize, Class documentClass ) {
+    public MongoDocumentWriter( Class documentClass, DocumentPartitioner documentPartitioner,
+                                CollectionDataSource collectionDataSource, int gridSize ) {
+
         this.collectionDataSource = collectionDataSource;
         this.gridSize = gridSize;
         this.documentClass = documentClass;
+        this.documentPartitioner = documentPartitioner;
     }
 
     public void write( List<DBObject> documents ) {
@@ -31,11 +36,9 @@ public class MongoDocumentWriter {
         Set<Future> tasks = new HashSet<Future>( gridSize );
         ExecutorService executorService = new ScheduledThreadPoolExecutor( gridSize );
 
-        DocumentPartitioner<DBObject> documentPartitioner = new DocumentPartitioner<DBObject>();
-
         // map
 
-        Map<Integer, List<DBObject>> partitions = documentPartitioner.partition( documents, gridSize );
+        Map<Integer, List<DBObject>> partitions = this.documentPartitioner.partition( documents, gridSize );
 
         for ( Integer partition: partitions.keySet() ) {
             Future<Void> task = executorService.submit(
