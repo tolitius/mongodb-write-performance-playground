@@ -21,7 +21,25 @@ public class CollectionDataSource {
             this.dbCollection = db.getCollection( collectionName );
             this.dbCollection.remove( new BasicDBObject() );
 
-            // forcing '_id' index in case a collection is empty
+            // forcing '_id' index to pre load the index in memory during a "cold" start
+            this.dbCollection.ensureIndex( new BasicDBObject( "_id", 1 ) );
+        }
+        catch ( UnknownHostException uhe ) {
+            throw new RuntimeException( uhe );
+        }
+
+    }
+
+    public CollectionDataSource( String dbName, String collectionName, String hostname, int portNumber ) {
+
+        try {
+            Mongo mongo = new Mongo( hostname, portNumber );
+            DB db = mongo.getDB( dbName );
+
+            this.dbCollection = db.getCollection( collectionName );
+            this.dbCollection.remove( new BasicDBObject() );
+
+            // forcing '_id' index to pre load the index in memory during a "cold" start
             this.dbCollection.ensureIndex( new BasicDBObject( "_id", 1 ) );
         }
         catch ( UnknownHostException uhe ) {

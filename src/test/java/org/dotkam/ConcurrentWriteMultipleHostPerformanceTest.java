@@ -1,7 +1,9 @@
 package org.dotkam;
 
-import com.mongodb.*;
+import com.mongodb.DBObject;
 import org.dotkam.mongodb.concurrent.MongoDocumentWriter;
+import org.dotkam.mongodb.concurrent.MongoMultipleHostDocumentWriter;
+import org.dotkam.mongodb.concurrent.MongoSingleHostDocumentWriter;
 import org.dotkam.mongodb.datasource.CollectionDataSource;
 import org.dotkam.mongodb.partition.GridSizeDocumentPartitioner;
 import org.dotkam.record.VeryImportantRecord;
@@ -11,35 +13,46 @@ import org.junit.Test;
 import org.springframework.util.StopWatch;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-import static junit.framework.Assert.assertEquals;
+public class ConcurrentWriteMultipleHostPerformanceTest {
 
-public class ConcurrentWritePerformanceTest {
-
-    private static final int HU_MONGO_US_NUMBER_OF_RECORDS = 100000;
-    private static final int GRID_SIZE = 3;
+    private static final int HU_MONGO_US_NUMBER_OF_RECORDS = 1000000;
+    private static final int GRID_SIZE = 2;
 
     private static final String DB_NAME = "writePerformanceDumbDb";
     private static final String COLLECTION_NAME = "vipRecords";
+
+    // to make sure every _test run_ produces (to a degree) unique documents
+    private static final long uniqueSalt = new Date().getTime();
 
     private MongoDocumentWriter documentWriter;
 
     @Before
     public void createDbAndCollection() throws Exception {
 
-        ( new Mongo() ).getDB( DB_NAME ).dropDatabase();
+        List<CollectionDataSource> multipleHosts = new ArrayList<CollectionDataSource>();
+        multipleHosts.add( new CollectionDataSource( DB_NAME, COLLECTION_NAME, "localhost", 10000 ) );
+        multipleHosts.add( new CollectionDataSource( DB_NAME, COLLECTION_NAME, "localhost", 10001 ) );
+        multipleHosts.add( new CollectionDataSource( DB_NAME, COLLECTION_NAME, "localhost", 10002 ) );
+        multipleHosts.add( new CollectionDataSource( DB_NAME, COLLECTION_NAME, "localhost", 10003 ) );
+        multipleHosts.add( new CollectionDataSource( DB_NAME, COLLECTION_NAME, "localhost", 10004 ) );
+        multipleHosts.add( new CollectionDataSource( DB_NAME, COLLECTION_NAME, "localhost", 10005 ) );
 
-        CollectionDataSource dataSource = new CollectionDataSource( DB_NAME, COLLECTION_NAME );
-        documentWriter = new MongoDocumentWriter(  VeryImportantRecord.class,
-                                                   new GridSizeDocumentPartitioner(),
-                                                   dataSource,
-                                                   GRID_SIZE );
+        for ( CollectionDataSource host: multipleHosts ) {
+            host.getCollection().drop();
+        }
+
+        documentWriter = new MongoMultipleHostDocumentWriter(  VeryImportantRecord.class,
+                                                               new GridSizeDocumentPartitioner(),
+                                                               multipleHosts,
+                                                               GRID_SIZE );
     }
 
     @After
     public void dropDataBase() throws Exception {
-        //( new Mongo() ).getDB( DB_NAME ).dropDatabase();
+        //dataSource.getCollection().drop();
     }
 
     @Test
@@ -51,7 +64,7 @@ public class ConcurrentWritePerformanceTest {
 
         List<DBObject> documents = new ArrayList<DBObject>();
 
-        for ( int i = 0; i < HU_MONGO_US_NUMBER_OF_RECORDS; i++ ) {
+        for ( long i = 0; i < HU_MONGO_US_NUMBER_OF_RECORDS; i++ ) {
             documents.add( createVeryImportantRecord( i ) );
         }
 
@@ -59,17 +72,17 @@ public class ConcurrentWritePerformanceTest {
 
         timer.stop();
 
-        // giving "some" time for documents to propagate to disk
-        Thread.sleep( 3000 );
-
-        DBCollection collection = ( new Mongo() ).getDB( DB_NAME ).getCollection( COLLECTION_NAME );
-        assertEquals ( "database has unexpected number of records",
-                       HU_MONGO_US_NUMBER_OF_RECORDS, collection.count() );
+//        // giving "some" time for documents to propagate to disk
+//        Thread.sleep( 10000 );
+//
+//        DBCollection collection = ( new Mongo() ).getDB( DB_NAME ).getCollection( COLLECTION_NAME );
+//        assertEquals ( "database has unexpected number of records",
+//                       HU_MONGO_US_NUMBER_OF_RECORDS, collection.count() );
 
         System.out.println( timer.prettyPrint() );
     }
 
-    private VeryImportantRecord createVeryImportantRecord( int id ) {
+    private VeryImportantRecord createVeryImportantRecord( long id ) {
 
         VeryImportantRecord viRecord = new VeryImportantRecord();
 
@@ -85,7 +98,7 @@ public class ConcurrentWritePerformanceTest {
         viRecord.setImportant( "important" );
         viRecord.setRecord( "record" );
         viRecord.setWith( "with" );
-        viRecord.setId( String.valueOf( id ) );
+        viRecord.setBusinessId( id );
         viRecord.setIwould( "I would" );
         viRecord.setLike( "like" );
         viRecord.setTo( "to" );
@@ -101,6 +114,7 @@ public class ConcurrentWritePerformanceTest {
         viRecord.setBring( "bring" );
         viRecord.setMyself( "my self" );
         viRecord.setSome( "some" );
+        viRecord.setSalty( uniqueSalt );
         viRecord.setMongos( "mongos" );
 
         return viRecord;

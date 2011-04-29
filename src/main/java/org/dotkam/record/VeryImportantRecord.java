@@ -16,7 +16,8 @@ public class VeryImportantRecord extends ReflectionDBObject {
     String important;
     String record;
     String with;
-    String id;
+
+    long businessId;
 
     String iwould;
     String like;
@@ -33,6 +34,7 @@ public class VeryImportantRecord extends ReflectionDBObject {
     String bring;
     String myself;
     String some;
+    long salty;
     String mongos;
 
     public String getYou() {
@@ -131,12 +133,12 @@ public class VeryImportantRecord extends ReflectionDBObject {
         this.with = with;
     }
 
-    public String getId() {
-        return id;
+    public long getBusinessId() {
+        return businessId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setBusinessId(long businessId) {
+        this.businessId = businessId;
     }
 
     public String getIwould() {
@@ -265,5 +267,13 @@ public class VeryImportantRecord extends ReflectionDBObject {
 
     public void setMongos(String mongos) {
         this.mongos = mongos;
+    }
+
+    public long getSalty() {
+        return salty;
+    }
+
+    public void setSalty(long salty) {
+        this.salty = salty;
     }
 }

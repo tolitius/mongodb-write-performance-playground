@@ -1,4 +1,4 @@
-package org.dotkam.mongodb.concurrent;
+package org.dotkam.mongodb.concurrent.task;
 
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;

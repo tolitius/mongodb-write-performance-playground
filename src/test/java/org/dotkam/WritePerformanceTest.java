@@ -24,7 +24,7 @@ public class WritePerformanceTest {
         veryImportantRecords = db.getCollection( "vipRecords" );
         veryImportantRecords.remove( new BasicDBObject() );
 
-        //veryImportantRecords.ensureIndex( new BasicDBObject( "_id", 1 ) );
+        veryImportantRecords.ensureIndex( new BasicDBObject( "_id", 1 ) );
         //veryImportantRecords.createIndex( new BasicDBObject( "id", 1 ) );
     }
 
@@ -41,7 +41,7 @@ public class WritePerformanceTest {
 
         timer.start( "adding " + HU_MONGO_US_NUMBER_OF_RECORDS + " number of records.." );
 
-        for ( int i = 0; i < HU_MONGO_US_NUMBER_OF_RECORDS; i++ ) {
+        for ( long i = 0; i < HU_MONGO_US_NUMBER_OF_RECORDS; i++ ) {
 
             VeryImportantRecord veryImportantRecord = createVeryImportantRecord( i );
 
@@ -76,7 +76,7 @@ public class WritePerformanceTest {
         System.out.println( timer.prettyPrint() );
     }
 
-    private VeryImportantRecord createVeryImportantRecord( int id ) {
+    private VeryImportantRecord createVeryImportantRecord( long id ) {
 
         VeryImportantRecord viRecord = new VeryImportantRecord();
 
@@ -92,7 +92,7 @@ public class WritePerformanceTest {
         viRecord.setImportant( "important" );
         viRecord.setRecord( "record" );
         viRecord.setWith( "with" );
-        viRecord.setId( String.valueOf( id ) );
+        viRecord.setBusinessId( id );
         viRecord.setIwould( "I would" );
         viRecord.setLike( "like" );
         viRecord.setTo( "to" );
