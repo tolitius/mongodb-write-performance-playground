@@ -17,7 +17,8 @@
     <list default="true" id="a4db0f60-982d-4bc9-ba1e-d00332e7c74e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.markdown" afterPath="$PROJECT_DIR$/README.markdown" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteMultipleHostPerformanceTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteMultipleHostPerformanceTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/dotkam/record/VeryImportantRecord.java" afterPath="$PROJECT_DIR$/src/main/java/org/dotkam/record/VeryImportantRecord.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteSingleHostPerformanceTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteSingleHostPerformanceTest.java" />
     </list>
     <ignored path="mongodb-write-performance-playground.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -80,17 +81,10 @@
       <file leaf-file-name="VeryImportantRecord.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/record/VeryImportantRecord.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="271" column="28" selection-start="4547" selection-end="4547" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DocumentPartitioner.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/partition/DocumentPartitioner.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="17" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="6" column="84" selection-start="182" selection-end="182" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -116,7 +110,7 @@
       <file leaf-file-name="MongoMultipleHostDocumentWriter.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/MongoMultipleHostDocumentWriter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="44" selection-start="450" selection-end="481" vertical-scroll-proportion="0.0">
+            <state line="16" column="71" selection-start="603" selection-end="603" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -136,7 +130,7 @@
       <file leaf-file-name="ConcurrentWriteSingleHostPerformanceTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteSingleHostPerformanceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="71" selection-start="1266" selection-end="1266" vertical-scroll-proportion="0.0">
+            <state line="43" column="39" selection-start="1456" selection-end="1456" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -154,7 +148,16 @@
       <file leaf-file-name="README.markdown" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.markdown">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="71" selection-start="2966" selection-end="2966" vertical-scroll-proportion="0.5980149">
+            <state line="100" column="141" selection-start="4408" selection-end="4408" vertical-scroll-proportion="4.466501">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WritePerformanceTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/org/dotkam/WritePerformanceTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="8" selection-start="675" selection-end="675" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -189,15 +192,15 @@
         <option value="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/partition/GridSizeDocumentPartitioner.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/dotkam/WritePerformanceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/MongoInsertTask.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/dotkam/record/VeryImportantRecord.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/datasource/CollectionDataSource.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/MongoDocumentWriter.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWritePerformanceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/MongoSingleHostDocumentWriter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/MongoMultipleHostDocumentWriter.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteMultipleHostsPerformanceTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteSingleHostPerformanceTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteMultipleHostPerformanceTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/dotkam/record/VeryImportantRecord.java" />
+        <option value="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteSingleHostPerformanceTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/MongoMultipleHostDocumentWriter.java" />
         <option value="$PROJECT_DIR$/README.markdown" />
       </list>
     </option>
@@ -451,7 +454,7 @@
       <recent name="org.dotkam.ConcurrentWritePerformanceTest" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ConcurrentWriteMultipleHostPerformanceTest">
+  <component name="RunManager" selected="JUnit.ConcurrentWriteSingleHostPerformanceTest">
     <configuration default="false" name="WritePerformanceTest" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -795,13 +798,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/dotkam/WritePerformanceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="8" selection-start="675" selection-end="675" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/task/MongoInsertTask.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="25" column="42" selection-start="809" selection-end="809" vertical-scroll-proportion="0.0">
@@ -812,13 +808,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/partition/DocumentPartitioner.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="17" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/record/VeryImportantRecord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="271" column="28" selection-start="4547" selection-end="4547" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -839,27 +828,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/MongoMultipleHostDocumentWriter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="44" selection-start="450" selection-end="481" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/MongoSingleHostDocumentWriter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="74" selection-start="551" selection-end="551" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteSingleHostPerformanceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="71" selection-start="1266" selection-end="1266" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/datasource/CollectionDataSource.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="33" column="68" selection-start="974" selection-end="974" vertical-scroll-proportion="0.0">
@@ -874,9 +842,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/dotkam/WritePerformanceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="8" selection-start="675" selection-end="675" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/MongoSingleHostDocumentWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="74" selection-start="551" selection-end="551" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/record/VeryImportantRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="84" selection-start="182" selection-end="182" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteSingleHostPerformanceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="39" selection-start="1456" selection-end="1456" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/MongoMultipleHostDocumentWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="71" selection-start="603" selection-end="603" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.markdown">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="71" selection-start="2966" selection-end="2966" vertical-scroll-proportion="0.5980149">
+        <state line="100" column="141" selection-start="4408" selection-end="4408" vertical-scroll-proportion="4.466501">
           <folding />
         </state>
       </provider>

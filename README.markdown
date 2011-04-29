@@ -1,9 +1,25 @@
 # What is "MongoDB Write Performance Playground"? ##
 
-+ A simple playground where ( for now ) a mongo-java-driver is used to INSERT X number of "some" records into MongoDB.
-+ This simple project is _meant_ to be "cloned" and changed to reflect what _you_ really need: e.g. change records, indexes, collections, number of records, etc..
+A simple playground where ( for now ) a mongo-java-driver is used to INSERT X number of "some" records into MongoDB.
 
-For "As Is" structure / configs, running it on Mac Book Pro i7 2.8 GHz.. Here are the results I got:
+### Things tried here:
+
++ Inserting documents One By One
++ Inserting documents All At Once
++ Partitioning documents for a given number of threads, and inserting them in parallel ( ThreadPoolExecutor )
++ Partitioning documents for a given number of threads... Inserting to MongoS having multiple Shards
++ Partitioning documents for a given number of threads... Inserting to multiple Mongo Daemons
+
+### What is "all this" for..
+
+This creation is _meant_ to be "cloned" and changed to reflect what _you_ really need: e.g. change documents, indexes, collections, number of documents, etc..
+
+### "Show Me The Money"
+
++ Running it on Mac Book Pro i7 2.8 GHz..
++ Single document (record) size is:  *665* bytes
+
+# RESULTS
 
 ## 10,000 ( Ten Thousand ) records
 
@@ -71,7 +87,20 @@ For "As Is" structure / configs, running it on Mac Book Pro i7 2.8 GHz.. Here ar
     -----------------------------------------
     10639  100%  adding 1000000 number of documents..
 
+### Current version of MongoDB ( 1.8.1 ) does not provide even distribution over shards
+
+    Unfortunately.
+    The way sharding is done, Mongo looks at the chunk size and moves chunks around in async manner.
+    Which means when X number of records are sent to MongoS it will only use "next" shard in case a chunk size is reached.
+    Hence inserts are still "sequential".
+    JIRA that "kind of" addresses that: https://jira.mongodb.org/browse/SERVER-939
+
+### Hence real time Even Distribution is needed. Which is done via manual partitioning by:
+
++ number of documents / grid size [ where in this example grid size = number of threads ]
++ number of documents / grid size Evenly Distributed over multiple MongoDB Daemons [ this.nextCollectionHost % collectionDataSources.size() ]
+
 ### The numbers above can be surely improved
 
- By using more clients [ I am using one ], having more RAM, using C driver, etc..
+ By having more RAM, having multiple physical clients / servers, using a C driver, etc..
  But the whole idea is to start somewhere...

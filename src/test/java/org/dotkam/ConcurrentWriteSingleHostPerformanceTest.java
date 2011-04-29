@@ -11,6 +11,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.util.StopWatch;
 
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -37,6 +40,13 @@ public class ConcurrentWriteSingleHostPerformanceTest {
         dataSource = new CollectionDataSource( DB_NAME, COLLECTION_NAME );
 
         dataSource.getCollection().drop();
+
+        Serializable vir = createVeryImportantRecord( 0 );
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream(baos);
+        oos.writeObject(vir);
+        oos.close();
+        System.out.println( baos.size() );
 
         documentWriter = new MongoSingleHostDocumentWriter(  VeryImportantRecord.class,
                                                    new GridSizeDocumentPartitioner(),

@@ -2,7 +2,9 @@ package org.dotkam.record;
 
 import com.mongodb.ReflectionDBObject;
 
-public class VeryImportantRecord extends ReflectionDBObject {
+import java.io.Serializable;
+
+public class VeryImportantRecord extends ReflectionDBObject implements Serializable {
 
     String you;
     String cant;
