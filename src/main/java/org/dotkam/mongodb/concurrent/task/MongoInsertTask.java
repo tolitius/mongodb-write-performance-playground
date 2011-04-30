@@ -2,6 +2,7 @@ package org.dotkam.mongodb.concurrent.task;
 
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
+import com.mongodb.WriteConcern;
 
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -23,6 +24,7 @@ public class MongoInsertTask implements Callable<Void> {
     public Void call() throws Exception {
 
         this.collection.setObjectClass( documentClass );
+        //this.collection.insert( documents, WriteConcern.FSYNC_SAFE );
         this.collection.insert( documents );
 
         return null;
