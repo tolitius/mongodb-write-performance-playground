@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.springframework.util.StopWatch;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ import static junit.framework.Assert.assertEquals;
 public class ConcurrentWriteSingleHostPerformanceTest {
 
     private static final int HU_MONGO_US_NUMBER_OF_RECORDS = 100000;
-    private static final int GRID_SIZE = 3;
+    private static final int GRID_SIZE = 4;
 
     private static final String DB_NAME = "writePerformanceDumbDb";
     private static final String COLLECTION_NAME = "vipRecords";
@@ -40,13 +41,6 @@ public class ConcurrentWriteSingleHostPerformanceTest {
         dataSource = new CollectionDataSource( DB_NAME, COLLECTION_NAME );
 
         dataSource.getCollection().drop();
-
-        Serializable vir = createVeryImportantRecord( 0 );
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ObjectOutputStream oos = new ObjectOutputStream(baos);
-        oos.writeObject(vir);
-        oos.close();
-        System.out.println( baos.size() );
 
         documentWriter = new MongoSingleHostDocumentWriter(  VeryImportantRecord.class,
                                                    new GridSizeDocumentPartitioner(),
@@ -123,4 +117,20 @@ public class ConcurrentWriteSingleHostPerformanceTest {
 
         return viRecord;
     }
+
+    private long tellMeMySize( Serializable object ) {
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
+        try {
+            ObjectOutputStream oos = new ObjectOutputStream( baos );
+            oos.writeObject( object );
+            oos.close();
+        } catch (IOException e) {
+            throw new RuntimeException( e );
+        }
+
+        return baos.size();
+    }
 }
+

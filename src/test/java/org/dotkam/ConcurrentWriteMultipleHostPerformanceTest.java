@@ -22,9 +22,9 @@ import static junit.framework.Assert.assertEquals;
 
 public class ConcurrentWriteMultipleHostPerformanceTest {
 
-    private static final int HU_MONGO_US_NUMBER_OF_RECORDS = 100000;
-    private static final int GRID_SIZE = 3;
-    private static final int NUMBER_OF_HOSTS = 1;
+    private static final int HU_MONGO_US_NUMBER_OF_RECORDS = 1000000;
+    private static final int GRID_SIZE = 15;
+    private static final int NUMBER_OF_HOSTS = 5;
 
     // Assumption is hosts are listening on sequential port numbers: e.g. 10000, 10001, 10002, 10003...
     private static final int FIRST_HOST_PORT = 10000;

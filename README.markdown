@@ -14,12 +14,11 @@ A simple playground where ( for now ) a mongo-java-driver is used to INSERT X nu
 
 This creation is _meant_ to be "cloned" and changed to reflect what _you_ really need: e.g. change documents, indexes, collections, number of documents, etc..
 
-### "Show Me The Money"
+# "Show Me The Money"
 
 + Running it on Mac Book Pro i7 2.8 GHz..
 + Single document (record) size is:  *665* bytes
-
-# RESULTS
++ A 1,000,000 documents is hungry, so: "-Xms512m -Xmx1024m -XX:MaxPermSize=384m -Xss128k"
 
 ## 10,000 ( Ten Thousand ) records
 
@@ -55,11 +54,11 @@ This creation is _meant_ to be "cloned" and changed to reflect what _you_ really
     -----------------------------------------
     02038  100%  adding 100000 number of records..
 
-    StopWatch '-- MongoDB Insert All With Partitioning [ grid size = 3 ] --': running time (millis) = 1313
+    StopWatch '-- MongoDB Insert All With Partitioning [ grid size = 4 ] --': running time (millis) = 1142
     -----------------------------------------
     ms     %     Task name
     -----------------------------------------
-    01313  100%  adding 100000 number of documents..
+    01142  100%  adding 100000 number of documents..
 
 ## 1,000,000 ( One Million ) records
 
@@ -75,17 +74,17 @@ This creation is _meant_ to be "cloned" and changed to reflect what _you_ really
     -----------------------------------------
     20238  100%  adding 1000000 number of records..
 
-    StopWatch '-- MongoDB Insert All With Partitioning [ grid size = 3 ] --': running time (millis) = 15865
+    StopWatch '-- MongoDB Insert All With Partitioning [ grid size = 3 ] --': running time (millis) = 12785
     -----------------------------------------
     ms     %     Task name
     -----------------------------------------
-    15865  100%  adding 1000000 number of documents..
+    12785  100%  adding 1000000 number of documents..
 
-    StopWatch '-- MongoDB Partitioning / Multiple Hosts [ grid size = 21 / number of hosts = 7 ] --': running time (millis) = 9952
+    StopWatch '-- MongoDB Partitioning / Multiple Hosts [ grid size = 15 / number of hosts = 5 ] --': running time (millis) = 9602
     -----------------------------------------
     ms     %     Task name
     -----------------------------------------
-    09952  100%  adding 1000000 number of documents..
+    09602  100%  adding 1000000 number of documents..
 
 ### Current version of MongoDB ( 1.8.1 ) does not provide even distribution over shards
 
