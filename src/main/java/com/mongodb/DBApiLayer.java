@@ -218,8 +218,20 @@ public class DBApiLayer extends DB {
                 }
             }
 
+            WriteResult last = null;
+
+            int cur = 0;
+            int maxsize = _mongo.getMaxBsonObjectSize();
+
+            OutMessage om = new OutMessage( _mongo , 2002 );
+
+            om.writeInt( 0 ); // reserved
+            om.writeCString( _fullNameSpace );
+
             if ( shouldApply ){
-                for ( int i=0; i<arr.length; i++ ){
+
+                for ( int i = 0; i < arr.length; i++ ){
+
                     DBObject o=arr[i];
                     apply( o );
                     _checkObject( o , false , false );
@@ -227,30 +239,42 @@ public class DBApiLayer extends DB {
                     if ( id instanceof ObjectId ){
                         ((ObjectId)id).notNew();
                     }
-                }
-            }
 
-            WriteResult last = null;
-
-            int cur = 0;
-            int maxsize = _mongo.getMaxBsonObjectSize();
-            while ( cur < arr.length ){
-                OutMessage om = new OutMessage( _mongo , 2002 );
-
-                om.writeInt( 0 ); // reserved
-                om.writeCString( _fullNameSpace );
-
-                for ( ; cur<arr.length; cur++ ){
-                    DBObject o = arr[cur];
-                    om.putObject( o );
+                    om.putObject( arr[cur] );
 
                     // limit for batch insert is 4 x maxbson on server, use 2 x to be safe
                     if ( om.size() > 2 * maxsize ){
-                        cur++;
-                        break;
+                        last = _connector.say( _db , om , concern );
+
+                        om = new OutMessage( _mongo , 2002 );
+
+                        om.writeInt( 0 ); // reserved
+                        om.writeCString( _fullNameSpace );
+                    }
+
+                    cur++;
+                }
+            }
+            else {
+                for ( cur = 0; cur < arr.length; cur++ ) {
+
+                    om.putObject( arr[cur] );
+
+                    // limit for batch insert is 4 x maxbson on server, use 2 x to be safe
+                    if ( om.size() > 2 * maxsize ){
+                        last = _connector.say( _db , om , concern );
+
+                        om = new OutMessage( _mongo , 2002 );
+
+                        om.writeInt( 0 ); // reserved
+                        om.writeCString( _fullNameSpace );
                     }
                 }
 
+            }
+
+            // all chunks were less than 'maxsize'
+            if ( last == null ) {
                 last = _connector.say( _db , om , concern );
             }
 
