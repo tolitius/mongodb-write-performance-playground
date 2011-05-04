@@ -1,0 +1,43 @@
+rm -rf /data/db/a/*
+rm -rf /data/db/b/*
+rm -rf /data/db/c/*
+rm -rf /data/db/d/*
+rm -rf /data/db/e/*
+rm -rf /data/db/f/*
+rm -rf /data/db/g/*
+rm -rf /data/db/config/*
+
+./mongod --shardsvr --dbpath /data/db/a --port 10000 > /tmp/sharda.log &
+./mongod --shardsvr --dbpath /data/db/b --port 10001 > /tmp/shardb.log &
+./mongod --shardsvr --dbpath /data/db/c --port 10002 > /tmp/shardc.log &
+./mongod --shardsvr --dbpath /data/db/d --port 10003 > /tmp/shardd.log &
+./mongod --shardsvr --dbpath /data/db/e --port 10004 > /tmp/sharde.log &
+./mongod --shardsvr --dbpath /data/db/f --port 10005 > /tmp/shardf.log &
+./mongod --shardsvr --dbpath /data/db/g --port 10006 > /tmp/shardg.log &
+
+./mongod --configsvr --dbpath /data/db/config --port 20000 > /tmp/configdb.log &
+./mongos --configdb localhost:20000 > /tmp/mongos.log &
+
+use writePerformanceDumbDb
+use admin
+
+db.runCommand( { addshard : "localhost:10000" } )
+db.runCommand( { addshard : "localhost:10001" } )
+db.runCommand( { addshard : "localhost:10002" } )
+db.runCommand( { addshard : "localhost:10003" } )
+db.runCommand( { addshard : "localhost:10004" } )
+db.runCommand( { addshard : "localhost:10005" } )
+db.runCommand( { addshard : "localhost:10006" } )
+
+db.runCommand( { enablesharding : "writePerformanceDumbDb" } ) 
+
+db.runCommand( { shardcollection : "writePerformanceDumbDb.vipRecords", key : {BusinessId : 1} } )
+
+db.runCommand( { split : "writePerformanceDumbDb.vipRecords" , middle : { BusinessId : NumberLong( 143000 ) } } )
+db.runCommand( { split : "writePerformanceDumbDb.vipRecords" , middle : { BusinessId : NumberLong( 286000 ) } } )
+db.runCommand( { split : "writePerformanceDumbDb.vipRecords" , middle : { BusinessId : NumberLong( 429000 ) } } )
+db.runCommand( { split : "writePerformanceDumbDb.vipRecords" , middle : { BusinessId : NumberLong( 572000 ) } } )
+db.runCommand( { split : "writePerformanceDumbDb.vipRecords" , middle : { BusinessId : NumberLong( 715000 ) } } )
+db.runCommand( { split : "writePerformanceDumbDb.vipRecords" , middle : { BusinessId : NumberLong( 858000 ) } } )
+db.runCommand( { split : "writePerformanceDumbDb.vipRecords" , middle : { BusinessId : NumberLong( 143000 ) } } )
+

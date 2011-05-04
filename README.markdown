@@ -9,6 +9,7 @@ A simple playground where ( for now ) a mongo-java-driver is used to INSERT X nu
 + Partitioning documents for a given number of threads, and inserting them in parallel ( ThreadPoolExecutor )
 + Partitioning documents for a given number of threads... Inserting to MongoS having multiple Shards
 + Partitioning documents for a given number of threads... Inserting to multiple Mongo Daemons
++ Pre-splitting chunks for a known number of threads, so the shard key is effective [ tags: partitioning, sharding ]
 
 ### What is "all this" for..
 
@@ -88,11 +89,13 @@ This creation is _meant_ to be "cloned" and changed to reflect what _you_ really
 
 ### Current version of MongoDB ( 1.8.1 ) does not provide even distribution over shards
 
-    Unfortunately.
-    The way sharding is done, Mongo looks at the chunk size and moves chunks around in async manner.
-    Which means when X number of records are sent to MongoS it will only use "next" shard in case a chunk size is reached.
-    Hence inserts are still "sequential".
-    JIRA that "kind of" addresses that: https://jira.mongodb.org/browse/SERVER-939
+  Unfortunately.
+  The way sharding is done, Mongo looks at the chunk size and moves chunks around in async manner.
+  Which means when X number of records are sent to MongoS it will only use "next" shard in case a chunk size is reached.
+  Hence inserts are still "sequential".
+  JIRA that "kind of" addresses that: https://jira.mongodb.org/browse/SERVER-939
+  
+  Even if chunks are 'pre-split' for a known number of shards / threads, INSERTing speed is way ( at least 3 times ) slower than a manual even distribution with [MongoMultipleHostDocumentWriter.java](https://github.com/anatoly-polinsky/mongodb-write-performance-playground/blob/master/src/main/java/org/dotkam/mongodb/concurrent/MongoMultipleHostDocumentWriter.java)
 
 ### Hence real time Even Distribution is needed. Which is done via manual partitioning by:
 
