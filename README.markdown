@@ -16,7 +16,6 @@ A simple playground where a mongo-java-driver and a mongo-c-driver are used to I
 This creation is _meant_ to be "cloned" and changed to reflect what _you_ really need: e.g. change documents, indexes, collections, number of documents, etc..
 
 # "Show Me The Money"
-
 # Mr. C goes first
 
 + Running it on Mac Book Pro i7 2.8 GHz..
