@@ -55,7 +55,7 @@ $ ./batch_insert 100000 50000
 inserting 100000 records with a batch size of 50000 => took 0.864108 seconds...
 ```
 
-## Now Miss Java..
+## Now Ms. Java..
 
 + Running it on Mac Book Pro i7 2.8 GHz..
 + Single document has 30 fields, and its size is *665* bytes
