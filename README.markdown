@@ -17,31 +17,45 @@ This creation is _meant_ to be "cloned" and changed to reflect what _you_ really
 
 # "Show Me The Money"
 
-## Mr. C goes first
+# Mr. C goes first
 
 + Running it on Mac Book Pro i7 2.8 GHz..
 + Single document (record) size is roughly *200* bytes
 
-to compile:
+### to compile
 
 ```c
 gcc -Isrc --std=c99 ./mongo-c-driver/src/*.c -I ./mongo-c-driver/src/ batch_insert.c -o batch_insert
 ```
 
-## 100,000 ( One Hundred Thousand ) records
+### to run
 
 ```bash
-$ time ./batch_insert 100000
-connection succeeded
-inserting 100000 records...
-connection closed
-
-real    0m0.410s
-user    0m0.329s
-sys     0m0.069s
+$ ./batch_insert
+    usage: ./batch_insert number_of_records batch_size
 ```
 
-## Now Miss Java..
+## 100,000 ( One Hundred Thousand ) records 
+
+```bash
+$ ./batch_insert 100000 100000
+
+inserting 100000 records with a batch size of 100000 => took 0.393889 seconds...
+```
+
+```bash
+$ ./batch_insert 100000 10000
+
+inserting 100000 records with a batch size of 10000 => took 1.351205 seconds...
+```
+
+```bash
+$ ./batch_insert 100000 50000
+
+inserting 100000 records with a batch size of 50000 => took 0.864108 seconds...
+```
+
+# Now Miss Java..
 
 + Running it on Mac Book Pro i7 2.8 GHz..
 + Single document (record) size is:  *665* bytes

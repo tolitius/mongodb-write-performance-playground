@@ -1,16 +1,18 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <sys/time.h>
 #include "bson.h"
 #include "mongo.h"
 
-static void batch_insert( mongo_connection *conn, int numberOfRecords );
+static void batch_insert_with_batch_size( mongo_connection *conn, int numberOfRecords, int batchSize );
+static void timer_pretty_print( struct timeval startTime, struct timeval endTime );
 
 int main( int argc, char *argv[] ) {
 
-   if ( argc != 2 ) /* argc should be 2 for correct execution */
+   if ( argc != 3 ) /* argc should be 2 for correct execution */
     {
-        printf( "usage: %s number_of_records", argv[0] );
+        printf( "\tusage: %s number_of_records batch_size\n", argv[0] );
         return 1;
     }
 
@@ -26,7 +28,14 @@ int main( int argc, char *argv[] ) {
         case mongo_conn_not_master: printf( "not master\n" ); return 1;
     }
 
-    batch_insert( conn, atoi( argv[1] ) );
+    struct timeval startTime;
+    struct timeval endTime;
+    gettimeofday( &startTime, NULL );
+
+    batch_insert_with_batch_size( conn, atoi( argv[1] ), atoi( argv[2] ) );
+
+    gettimeofday( &endTime, NULL );
+    timer_pretty_print( startTime, endTime );
 
     mongo_destroy( conn );
     printf( "\nconnection closed\n" );
@@ -35,15 +44,15 @@ int main( int argc, char *argv[] ) {
 }
 
 
-static void batch_insert( mongo_connection *conn, int numberOfRecords ) {
+static void batch_insert_with_batch_size( mongo_connection *conn, int numberOfRecords, int batchSize ) {
 
-    printf( "inserting %d records...", numberOfRecords );
+    printf( "\ninserting %d records with a batch size of %d", numberOfRecords, batchSize );
 
-    bson *p, **ps;
+    bson *p, **partition;
     bson_buffer *p_buf;
     int i;
 
-    ps = ( bson ** )malloc( sizeof( bson * ) * numberOfRecords );
+    partition = ( bson ** )malloc( sizeof( bson * ) * batchSize );
 
     for ( i = 0; i < numberOfRecords; i++ ) {
 
@@ -83,14 +92,46 @@ static void batch_insert( mongo_connection *conn, int numberOfRecords ) {
         bson_append_long( p_buf, "25", 55555555 );
 
         bson_from_buffer( p, p_buf );
-        ps[i] = p;
+        partition[ i % batchSize ] = p;
         free( p_buf );
+        
+        // if we reach a batch size
+        if ( ( i + 1 ) % batchSize == 0 ) {
+
+            //printf( "\nOn %d record => ", i + 1 );
+            //printf( " persisting a batch size of %d records... \n", batchSize );
+
+            mongo_insert_batch( conn, "dumb.collection", partition, batchSize );
+
+            //printf( "[Ok]\n" );
+
+            // (!) need to free partition here before reassigning
+            for ( int j = 0; j < batchSize; j++ ) {
+                bson_destroy( partition[j] );
+                free( partition[j] );
+            }
+
+            partition = ( bson ** )malloc( sizeof( bson * ) * batchSize );
+        }
     }
 
-    mongo_insert_batch( conn, "dumb.collection", ps, numberOfRecords );
+    // insert the remainder if any
+    if ( i % batchSize != 0 ) {
+            //printf( "\npersisting a remainder.. \n" );
 
-    for ( i = 0; i < numberOfRecords; i++ ) {
-        bson_destroy( ps[i] );
-        free( ps[i] );
+            mongo_insert_batch( conn, "dumb.collection", partition, i % batchSize );
+
+            //printf( "[Ok]\n" );
+
+            for ( int j = 0; j < ( i % batchSize ) ; j++ ) {
+                bson_destroy( partition[j] );
+                free( partition[j] );
+            }
     }
+}
+
+static void timer_pretty_print( struct timeval startTime, struct timeval endTime ) {
+
+    double took = ( endTime.tv_sec - startTime.tv_sec ) * 1000000 + ( endTime.tv_usec - startTime.tv_usec );
+    printf( " => took %f seconds...\n", took / 1000000 );
 }
