@@ -1,6 +1,6 @@
 # What is "MongoDB Write Performance Playground"? ##
 
-A simple playground where ( for now ) a mongo-java-driver is used to INSERT X number of "some" records into MongoDB.
+A simple playground where a mongo-java-driver and a mongo-c-driver are used to INSERT X number of "some" records into MongoDB.
 
 ### Things tried here:
 
@@ -16,6 +16,32 @@ A simple playground where ( for now ) a mongo-java-driver is used to INSERT X nu
 This creation is _meant_ to be "cloned" and changed to reflect what _you_ really need: e.g. change documents, indexes, collections, number of documents, etc..
 
 # "Show Me The Money"
+
+## Mr. C goes first
+
++ Running it on Mac Book Pro i7 2.8 GHz..
++ Single document (record) size is roughly *200* bytes
+
+to compile:
+
+```c
+gcc -Isrc --std=c99 ./mongo-c-driver/src/*.c -I ./mongo-c-driver/src/ batch_insert.c -o batch_insert
+```
+
+## 100,000 ( One Hundred Thousand ) records
+
+```bash
+$ time ./batch_insert 100000
+connection succeeded
+inserting 100000 records...
+connection closed
+
+real    0m0.410s
+user    0m0.329s
+sys     0m0.069s
+```
+
+## Now Miss Java..
 
 + Running it on Mac Book Pro i7 2.8 GHz..
 + Single document (record) size is:  *665* bytes
