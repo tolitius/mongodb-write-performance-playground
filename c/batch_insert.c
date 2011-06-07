@@ -10,7 +10,7 @@ static void timer_pretty_print( struct timeval startTime, struct timeval endTime
 
 int main( int argc, char *argv[] ) {
 
-   if ( argc != 3 ) /* argc should be 2 for correct execution */
+   if ( argc != 3 )
     {
         printf( "\tusage: %s number_of_records batch_size\n", argv[0] );
         return 1;
