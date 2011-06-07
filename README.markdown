@@ -135,7 +135,7 @@ inserting 100000 records with a batch size of 50000 => took 0.864108 seconds...
   Hence inserts are still "sequential".
   JIRA that "kind of" addresses that: https://jira.mongodb.org/browse/SERVER-939
   
-  Even if chunks are 'pre-split' for a known number of shards / threads, INSERTing speed is way ( at least 3 times ) slower than a manual even distribution with [MongoMultipleHostDocumentWriter.java](https://github.com/anatoly-polinsky/mongodb-write-performance-playground/blob/master/src/main/java/org/dotkam/mongodb/concurrent/MongoMultipleHostDocumentWriter.java)
+  Even if chunks are 'pre-split' for a known number of shards / threads, INSERTing speed is way ( at least 3 times ) slower than a manual even distribution with [MongoMultipleHostDocumentWriter.java](https://github.com/anatoly-polinsky/mongodb-write-performance-playground/blob/master/java/src/main/java/org/dotkam/mongodb/concurrent/MongoMultipleHostDocumentWriter.java)
 
 ### Hence real time Even Distribution is needed. Which is done via manual partitioning by:
 
