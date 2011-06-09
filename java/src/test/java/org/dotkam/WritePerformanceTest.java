@@ -1,7 +1,7 @@
 package org.dotkam;
 
 import com.mongodb.*;
-import org.dotkam.record.VeryImportantRecord;
+import org.dotkam.document.VeryImportantDocument;
 import org.junit.*;
 import org.springframework.util.StopWatch;
 
@@ -43,10 +43,11 @@ public class WritePerformanceTest {
 
         for ( long i = 0; i < HU_MONGO_US_NUMBER_OF_RECORDS; i++ ) {
 
-            VeryImportantRecord veryImportantRecord = createVeryImportantRecord( i );
+            VeryImportantDocument veryImportantDocument = new VeryImportantDocument();
 
-            veryImportantRecords.setObjectClass( VeryImportantRecord.class );
-            veryImportantRecords.insert( veryImportantRecord );
+            veryImportantDocument.set_id( i );
+            veryImportantRecords.setObjectClass( VeryImportantDocument.class );
+            veryImportantRecords.insert(veryImportantDocument);
 
         }
 
@@ -65,51 +66,15 @@ public class WritePerformanceTest {
         List<DBObject> records = new ArrayList<DBObject>();
 
         for ( int i = 0; i < HU_MONGO_US_NUMBER_OF_RECORDS; i++ ) {
-            records.add( createVeryImportantRecord( i ) );
+
+            records.add( new VeryImportantDocument() );
         }
 
-        veryImportantRecords.setObjectClass( VeryImportantRecord.class );
+        veryImportantRecords.setObjectClass( VeryImportantDocument.class );
         veryImportantRecords.insert( records );
 
         timer.stop();
 
         System.out.println( timer.prettyPrint() );
-    }
-
-    private VeryImportantRecord createVeryImportantRecord( long id ) {
-
-        VeryImportantRecord viRecord = new VeryImportantRecord();
-
-        viRecord.setYou( "you" );
-        viRecord.setCant( "cant" );
-        viRecord.setLose( "lose" );
-        viRecord.setMe( "me" );
-        viRecord.setBecause( "because" );
-        viRecord.setI( "I" );
-        viRecord.setAm( "am" );
-        viRecord.setAn( "an" );
-        viRecord.setExtremely( "extremely" );
-        viRecord.setImportant( "important" );
-        viRecord.setRecord( "record" );
-        viRecord.setWith( "with" );
-        viRecord.setBusinessId( id );
-        viRecord.setIwould( "I would" );
-        viRecord.setLike( "like" );
-        viRecord.setTo( "to" );
-        viRecord.setBe( "be" );
-        viRecord.setPersisted( "persisted" );
-        viRecord.setAnd( "and" );
-        viRecord.setKept( "kept" );
-        viRecord.setIn( "in" );
-        viRecord.setDry( "dry" );
-        viRecord.setCozy( "cozy" );
-        viRecord.setPlace( "place" );
-        viRecord.setAlso( "also" );
-        viRecord.setBring( "bring" );
-        viRecord.setMyself( "my self" );
-        viRecord.setSome( "some" );
-        viRecord.setMongos( "mongos" );
-
-        return viRecord;
     }
 }

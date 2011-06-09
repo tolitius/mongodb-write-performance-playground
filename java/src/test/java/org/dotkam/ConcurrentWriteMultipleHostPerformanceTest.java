@@ -1,19 +1,20 @@
 package org.dotkam;
 
-import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
-import com.mongodb.Mongo;
 import org.dotkam.mongodb.concurrent.MongoDocumentWriter;
 import org.dotkam.mongodb.concurrent.MongoMultipleHostDocumentWriter;
-import org.dotkam.mongodb.concurrent.MongoSingleHostDocumentWriter;
 import org.dotkam.mongodb.datasource.CollectionDataSource;
 import org.dotkam.mongodb.partition.GridSizeDocumentPartitioner;
-import org.dotkam.record.VeryImportantRecord;
+import org.dotkam.document.VeryImportantDocument;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.util.StopWatch;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,10 +25,11 @@ public class ConcurrentWriteMultipleHostPerformanceTest {
 
     private static final int HU_MONGO_US_NUMBER_OF_RECORDS = 1000000;
     private static final int GRID_SIZE = 15;
+    private static final int SINGLE_BATCH_THRESHOLD = 1000000;
     private static final int NUMBER_OF_HOSTS = 5;
 
-    // Assumption is hosts are listening on sequential port numbers: e.g. 10000, 10001, 10002, 10003...
-    private static final int FIRST_HOST_PORT = 10000;
+    // Assumption is hosts are listening on sequential port numbers: e.g. 30000, 30001, 30002, 30003...
+    private static final int FIRST_HOST_PORT = 30000;
 
     private static final String DB_NAME = "writePerformanceDumbDb";
     private static final String COLLECTION_NAME = "vipRecords";
@@ -45,11 +47,11 @@ public class ConcurrentWriteMultipleHostPerformanceTest {
 
             CollectionDataSource host = new CollectionDataSource(
                     DB_NAME, COLLECTION_NAME, "localhost", FIRST_HOST_PORT + i );
-            host.getCollection().drop();
+            //host.getCollection().drop();
             multipleHosts.add( host );
         }
 
-        documentWriter = new MongoMultipleHostDocumentWriter(  VeryImportantRecord.class,
+        documentWriter = new MongoMultipleHostDocumentWriter(  VeryImportantDocument.class,
                                                                new GridSizeDocumentPartitioner(),
                                                                multipleHosts,
                                                                GRID_SIZE );
@@ -66,15 +68,38 @@ public class ConcurrentWriteMultipleHostPerformanceTest {
         StopWatch timer = new StopWatch("-- MongoDB Partitioning / Multiple Hosts " +
                 "[ grid size = " + GRID_SIZE + " / number of hosts = " + NUMBER_OF_HOSTS + " ] --");
 
+        System.out.println( "working with a document size of " +
+                tellMeMySize( new VeryImportantDocument() ) + " bytes" );
+
         timer.start( "adding " + HU_MONGO_US_NUMBER_OF_RECORDS + " number of documents.." );
 
         List<DBObject> documents = new ArrayList<DBObject>();
 
-        for ( long i = 0; i < HU_MONGO_US_NUMBER_OF_RECORDS; i++ ) {
-            documents.add( createVeryImportantRecord( i ) );
+        long i;
+        for ( i = 0; i < HU_MONGO_US_NUMBER_OF_RECORDS; i++ ) {
+
+            VeryImportantDocument document = new VeryImportantDocument();
+
+            document.set_id( i );
+            document.setBusinessId(i % NUMBER_OF_HOSTS);
+            document.setSalt( uniqueSalt );
+
+            documents.add( document );
+
+            if ( ( i + 1 ) % SINGLE_BATCH_THRESHOLD == 0 ) {
+
+                System.out.println( "=> sending " + SINGLE_BATCH_THRESHOLD + " documents down the Mongo pipe" );
+                documentWriter.write( documents );
+                documents = new ArrayList<DBObject>();
+
+            }
         }
 
-        documentWriter.write( documents );
+        // if we still have a remainder of documents..
+        if ( ( i ) % SINGLE_BATCH_THRESHOLD != 0 ) {
+            System.out.println( "=> sending the remainder: " + documents.size() + " documents down the Mongo pipe" );
+            documentWriter.write( documents );
+        }
 
         timer.stop();
 
@@ -88,41 +113,18 @@ public class ConcurrentWriteMultipleHostPerformanceTest {
         System.out.println( timer.prettyPrint() );
     }
 
-    private VeryImportantRecord createVeryImportantRecord( long id ) {
+    private long tellMeMySize( Serializable object ) {
 
-        VeryImportantRecord viRecord = new VeryImportantRecord();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-        viRecord.setYou( "you" );
-        viRecord.setCant( "cant" );
-        viRecord.setLose( "lose" );
-        viRecord.setMe( "me" );
-        viRecord.setBecause( "because" );
-        viRecord.setI( "I" );
-        viRecord.setAm( "am" );
-        viRecord.setAn( "an" );
-        viRecord.setExtremely( "extremely" );
-        viRecord.setImportant( "important" );
-        viRecord.setRecord( "record" );
-        viRecord.setWith( "with" );
-        viRecord.setBusinessId( id );
-        viRecord.setIwould( "I would" );
-        viRecord.setLike( "like" );
-        viRecord.setTo( "to" );
-        viRecord.setBe( "be" );
-        viRecord.setPersisted( "persisted" );
-        viRecord.setAnd( "and" );
-        viRecord.setKept( "kept" );
-        viRecord.setIn( "in" );
-        viRecord.setDry( "dry" );
-        viRecord.setCozy( "cozy" );
-        viRecord.setPlace( "place" );
-        viRecord.setAlso( "also" );
-        viRecord.setBring( "bring" );
-        viRecord.setMyself( "my self" );
-        viRecord.setSome( "some" );
-        viRecord.setSalty( uniqueSalt );
-        viRecord.setMongos( "mongos" );
+        try {
+            ObjectOutputStream oos = new ObjectOutputStream( baos );
+            oos.writeObject( object );
+            oos.close();
+        } catch (IOException e) {
+            throw new RuntimeException( e );
+        }
 
-        return viRecord;
+        return baos.size();
     }
 }
