@@ -111,7 +111,7 @@ public class PoolOutputBuffer extends OutputBuffer {
             byte[] b = _get( i );
             int amt = _end.len( i );
 
-            System.out.println( "writing " + amt + " bytes" );
+            //System.out.println( "writing " + amt + " bytes" );
 
             out.write( b , 0 , amt );
             total += amt;
