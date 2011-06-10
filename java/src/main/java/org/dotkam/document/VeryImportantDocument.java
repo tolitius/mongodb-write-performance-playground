@@ -25,19 +25,6 @@ public class VeryImportantDocument extends ReflectionDBObject implements Seriali
     long dummy13 = 13;
     long dummy14 = 14;
     long dummy15 = 15;
-    long dummy16 = 16;
-    long dummy17 = 17;
-    long dummy18 = 18;
-    long dummy19 = 19;
-    long dummy20 = 20;
-    long dummy21 = 21;
-    long dummy22 = 22;
-    long dummy23 = 23;
-    long dummy24 = 24;
-    long dummy25 = 25;
-    long dummy26 = 26;
-    long dummy27 = 27;
-    long dummy28 = 28;
 
     public Long get_id() {
         return _id;
@@ -181,109 +168,5 @@ public class VeryImportantDocument extends ReflectionDBObject implements Seriali
 
     public void setDummy15(long dummy15) {
         this.dummy15 = dummy15;
-    }
-
-    public long getDummy16() {
-        return dummy16;
-    }
-
-    public void setDummy16(long dummy16) {
-        this.dummy16 = dummy16;
-    }
-
-    public long getDummy17() {
-        return dummy17;
-    }
-
-    public void setDummy17(long dummy17) {
-        this.dummy17 = dummy17;
-    }
-
-    public long getDummy18() {
-        return dummy18;
-    }
-
-    public void setDummy18(long dummy18) {
-        this.dummy18 = dummy18;
-    }
-
-    public long getDummy19() {
-        return dummy19;
-    }
-
-    public void setDummy19(long dummy19) {
-        this.dummy19 = dummy19;
-    }
-
-    public long getDummy20() {
-        return dummy20;
-    }
-
-    public void setDummy20(long dummy20) {
-        this.dummy20 = dummy20;
-    }
-
-    public long getDummy21() {
-        return dummy21;
-    }
-
-    public void setDummy21(long dummy21) {
-        this.dummy21 = dummy21;
-    }
-
-    public long getDummy22() {
-        return dummy22;
-    }
-
-    public void setDummy22(long dummy22) {
-        this.dummy22 = dummy22;
-    }
-
-    public long getDummy23() {
-        return dummy23;
-    }
-
-    public void setDummy23(long dummy23) {
-        this.dummy23 = dummy23;
-    }
-
-    public long getDummy24() {
-        return dummy24;
-    }
-
-    public void setDummy24(long dummy24) {
-        this.dummy24 = dummy24;
-    }
-
-    public long getDummy25() {
-        return dummy25;
-    }
-
-    public void setDummy25(long dummy25) {
-        this.dummy25 = dummy25;
-    }
-
-    public long getDummy26() {
-        return dummy26;
-    }
-
-    public void setDummy26(long dummy26) {
-        this.dummy26 = dummy26;
-    }
-
-    public long getDummy27() {
-        return dummy27;
-    }
-
-    public void setDummy27(long dummy27) {
-        this.dummy27 = dummy27;
-    }
-
-    public long getDummy28() {
-        return dummy28;
-    }
-
-    public void setDummy28(long dummy28) {
-        this.dummy28 = dummy28;
     }
 }

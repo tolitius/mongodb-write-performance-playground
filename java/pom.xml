@@ -26,6 +26,11 @@
             <artifactId>spring-core</artifactId>
             <version>3.0.5.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.8</version>
+        </dependency>
 
     </dependencies>
 

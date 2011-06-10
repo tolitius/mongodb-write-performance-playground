@@ -23,7 +23,7 @@ import static junit.framework.Assert.assertEquals;
 
 public class ConcurrentWriteSingleHostPerformanceTest {
 
-    private static final int HU_MONGO_US_NUMBER_OF_RECORDS = 200000;
+    private static final int HU_MONGO_US_NUMBER_OF_RECORDS = 30000000;
     private static final int SINGLE_BATCH_THRESHOLD = 1000000;
     private static final int GRID_SIZE = 4;
 
@@ -41,7 +41,7 @@ public class ConcurrentWriteSingleHostPerformanceTest {
 
         dataSource = new CollectionDataSource( DB_NAME, COLLECTION_NAME );
 
-        dataSource.getCollection().drop();
+        //dataSource.getCollection().drop();
 
         documentWriter = new MongoSingleHostDocumentWriter(  VeryImportantDocument.class,
                                                    new GridSizeDocumentPartitioner(),
@@ -71,7 +71,7 @@ public class ConcurrentWriteSingleHostPerformanceTest {
 
             VeryImportantDocument document = new VeryImportantDocument();
 
-            document.set_id(i);
+            document.set_id( i );
             document.setSalt( uniqueSalt );
 
             documents.add( document );

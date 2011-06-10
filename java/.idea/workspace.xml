@@ -18,12 +18,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4db0f60-982d-4bc9-ba1e-d00332e7c74e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/dotkam/document/VeryImportantDocument.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/org/dotkam/record/VeryImportantRecord.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_8.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/benchmark/AbstractMongoKiller.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/benchmark/SingleHostMongoKiller.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/dotkam/runner/MongoKiller.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/dotkam/util/SizeTeller.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/mongo_killer.yaml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/gradle_config.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/gradle_settings2_config.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteMultipleHostPerformanceTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteMultipleHostPerformanceTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mongodb-write-performance-playground.iml" afterPath="$PROJECT_DIR$/mongodb-write-performance-playground.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/dotkam/document/VeryImportantDocument.java" afterPath="$PROJECT_DIR$/src/main/java/org/dotkam/document/VeryImportantDocument.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteSingleHostPerformanceTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteSingleHostPerformanceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/dotkam/WritePerformanceTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/dotkam/WritePerformanceTest.java" />
     </list>
     <ignored path="mongodb-write-performance-playground.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -83,28 +90,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ConcurrentWriteMultipleHostPerformanceTest.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteMultipleHostPerformanceTest.java">
+      <file leaf-file-name="SizeTeller.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/util/SizeTeller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="62" selection-start="1171" selection-end="1171" vertical-scroll-proportion="0.5611511">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConcurrentWriteSingleHostPerformanceTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteSingleHostPerformanceTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="31" selection-start="747" selection-end="747" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="VeryImportantDocument.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/document/VeryImportantDocument.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="24" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0">
+            <state line="13" column="8" selection-start="288" selection-end="288" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -112,11 +101,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WritePerformanceTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/org/dotkam/WritePerformanceTest.java">
+      <file leaf-file-name="ConcurrentWriteMultipleHostPerformanceTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteMultipleHostPerformanceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="12" selection-start="1438" selection-end="1438" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="83" column="35" selection-start="3217" selection-end="3217" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1307718153000" expanded="true" signature="3194:3282" placeholder="//..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MongoKiller.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/runner/MongoKiller.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="17" selection-start="213" selection-end="213" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SingleHostMongoKiller.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/benchmark/SingleHostMongoKiller.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="8" selection-start="481" selection-end="481" vertical-scroll-proportion="0.7058824">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -135,22 +148,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/MongoDocumentWriter.java" />
-        <option value="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWritePerformanceTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/MongoSingleHostDocumentWriter.java" />
-        <option value="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteMultipleHostsPerformanceTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/dotkam/record/VeryImportantRecord.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/MongoMultipleHostDocumentWriter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mongodb/DBCollection.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mongodb/DBApiLayer.java" />
         <option value="$PROJECT_DIR$/README.markdown" />
         <option value="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/task/MongoInsertTask.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/dotkam/WritePerformanceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/dotkam/document/ObjectSizeFetcher.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/dotkam/document/IamBig.java" />
-        <option value="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteSingleHostPerformanceTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/dotkam/document/VeryImportantDocument.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteMultipleHostPerformanceTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/dotkam/document/VeryImportantDocument.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bson/io/PoolOutputBuffer.java" />
+        <option value="$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteSingleHostPerformanceTest.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mongo_killer.yaml" />
+        <option value="$PROJECT_DIR$/src/main/java/org/dotkam/util/SizeTeller.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/dotkam/runner/MongoKiller.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/benchmark/AbstractMongoKiller.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/benchmark/SingleHostMongoKiller.java" />
       </list>
     </option>
   </component>
@@ -196,7 +209,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Favorites" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
@@ -261,7 +273,135 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mongodb-write-performance-playground" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dotkam" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mongodb-write-performance-playground" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dotkam" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="runner" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mongodb-write-performance-playground" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dotkam" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mongodb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="partition" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mongodb-write-performance-playground" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -295,6 +435,10 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="dotkam" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -303,7 +447,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="datasource" />
+              <option name="myItemId" value="concurrent" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -326,6 +470,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -333,7 +481,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="document" />
+              <option name="myItemId" value="mongodb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="benchmark" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -356,18 +508,51 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mongodb-write-performance-playground" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mongodb" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.0" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.lastSelected" value="reference.settingsdialog.project.gradle" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -377,6 +562,8 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -388,31 +575,25 @@
       <recent name="org.dotkam.ConcurrentWritePerformanceTest" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ConcurrentWriteSingleHostPerformanceTest">
-    <configuration default="false" name="WritePerformanceTest" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+  <component name="RunManager" selected="Application.MongoKiller">
+    <configuration default="false" name="MongoKiller" type="Application" factoryName="Application" temporary="true">
+      <extension name="coverage" enabled="false" merge="false">
         <pattern>
-          <option name="PATTERN" value="org.dotkam.*" />
+          <option name="PATTERN" value="org.dotkam.runner.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <module name="mongodb-write-performance-playground" />
+      <option name="MAIN_CLASS_NAME" value="org.dotkam.runner.MongoKiller" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" value="" />
-      <option name="PACKAGE_NAME" value="org.dotkam" />
-      <option name="MAIN_CLASS_NAME" value="org.dotkam.WritePerformanceTest" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-Xms512m -Xmx1024m -XX:MaxPermSize=384m -Xss128k" />
-      <option name="PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
+      <module name="mongodb-write-performance-playground" />
       <envs />
-      <patterns />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
@@ -626,7 +807,7 @@
       </method>
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.WritePerformanceTest" />
+      <item index="0" class="java.lang.String" itemvalue="Application.MongoKiller" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.WritePerformanceTest.insertAllRecordsAtOnce" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.ConcurrentWriteSingleHostPerformanceTest.insertRecordsWithPartitioning" />
       <item index="3" class="java.lang.String" itemvalue="JUnit.ConcurrentWriteMultipleHostPerformanceTest" />
@@ -651,6 +832,7 @@
     <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
     <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
     <option name="FORCE_UPDATE" value="false" />
+    <configuration useDefault="true">$USER_HOME$/.subversion_IDEA</configuration>
     <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
   </component>
   <component name="TaskManager">
@@ -662,28 +844,30 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="38" y="43" width="1624" height="944" extended-state="0" />
+    <frame x="37" y="50" width="1624" height="944" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292978" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288835" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39927185" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4696602" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3774272" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288835" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295238" sideWeight="0.5376214" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2704762" sideWeight="0.565534" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.43446603" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30412698" sideWeight="0.5303398" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30703884" sideWeight="0.9993651" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288835" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -702,7 +886,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="optimizing &quot;insert&quot; to only pass through documents ONCE when creating batches and 'shouldApply' ( create &quot;_id&quot;s ) is true" />
+    <option name="LAST_COMMIT_MESSAGE" value="commenting out a byte size metrics sent to the socket" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -716,6 +900,42 @@
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="optimizing &quot;insert&quot; to only pass through documents ONCE when creating batches and 'shouldApply' ( create &quot;_id&quot;s ) is true" />
+    <MESSAGE value="looking at PoolOutputBuffer to measure what's been sent over the socket" />
+    <MESSAGE value="commenting out a byte size metrics sent to the socket" />
+  </component>
+  <component name="VssConfiguration">
+    <option name="CLIENT_PATH" value="" />
+    <option name="SRCSAFEINI_PATH" value="" />
+    <option name="USER_NAME" value="" />
+    <option name="PWD" value="" />
+    <CheckoutOptions>
+      <option name="COMMENT" value="" />
+      <option name="DO_NOT_GET_LATEST_VERSION" value="false" />
+      <option name="REPLACE_WRITABLE" value="false" />
+      <option name="RECURSIVE" value="false" />
+    </CheckoutOptions>
+    <CheckinOptions>
+      <option name="COMMENT" value="" />
+      <option name="KEEP_CHECKED_OUT" value="false" />
+      <option name="RECURSIVE" value="false" />
+    </CheckinOptions>
+    <AddOptions>
+      <option name="STORE_ONLY_LATEST_VERSION" value="false" />
+      <option name="CHECK_OUT_IMMEDIATELY" value="false" />
+    </AddOptions>
+    <UndocheckoutOptions>
+      <option name="MAKE_WRITABLE" value="false" />
+      <option name="REPLACE_LOCAL_COPY" value="2" />
+      <option name="RECURSIVE" value="false" />
+    </UndocheckoutOptions>
+    <GetOptions>
+      <option name="REPLACE_WRITABLE" value="0" />
+      <option name="MAKE_WRITABLE" value="false" />
+      <option name="ANSWER_NEGATIVELY" value="false" />
+      <option name="ANSWER_POSITIVELY" value="false" />
+      <option name="RECURSIVE" value="false" />
+      <option name="VERSION" />
+    </GetOptions>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -725,99 +945,117 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/mongodb/mongo-java-driver/2.5.3/mongo-java-driver-2.5.3-sources.jar!/com/mongodb/DBApiLayer.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/mongodb/mongo-java-driver/2.5.3/mongo-java-driver-2.5.3-sources.jar!/org/bson/io/OutputBuffer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="23" selection-start="0" selection-end="16508" vertical-scroll-proportion="0.034351144" />
+        <state line="11" column="25" selection-start="252" selection-end="252" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mongodb/DBApiLayer.java">
+    <entry file="jar:///System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar!/java/util/List.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="232" column="0" selection-start="6727" selection-end="6727" vertical-scroll-proportion="0.0" />
+        <state line="39" column="6" selection-start="900" selection-end="900" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/task/MongoInsertTask.java">
+    <entry file="jar:///System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar!/java/io/OutputStream.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="8" selection-start="880" selection-end="880" vertical-scroll-proportion="0.49811321">
+        <state line="13" column="16" selection-start="456" selection-end="456" vertical-scroll-proportion="0.3019355" />
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/mongodb/mongo-java-driver/2.5.3/mongo-java-driver-2.5.3-sources.jar!/org/bson/io/PoolOutputBuffer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="29" selection-start="0" selection-end="5123" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/document/VeryImportantDocument.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="171" column="0" selection-start="3086" selection-end="3086" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/MongoSingleHostDocumentWriter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bson/io/PoolOutputBuffer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="13" selection-start="490" selection-end="490" vertical-scroll-proportion="0.02264151">
+        <state line="113" column="14" selection-start="2453" selection-end="2453" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="31" column="24" selection-start="1120" selection-end="1120" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/datasource/CollectionDataSource.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/MongoSingleHostDocumentWriter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="210" selection-end="210" vertical-scroll-proportion="0.0">
+        <state line="15" column="59" selection-start="536" selection-end="536" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/mongodb/mongo-java-driver/2.5.3/mongo-java-driver-2.5.3-sources.jar!/org/bson/BSONObject.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/concurrent/MongoDocumentWriter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="17" selection-start="765" selection-end="765" vertical-scroll-proportion="1.0089686">
+        <state line="7" column="36" selection-start="112" selection-end="131" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/mongodb/mongo-java-driver/2.5.3/mongo-java-driver-2.5.3-sources.jar!/com/mongodb/DBObject.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mongo_killer.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="40" selection-start="809" selection-end="809" vertical-scroll-proportion="0.38197425">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/mongodb/mongo-java-driver/2.5.3/mongo-java-driver-2.5.3-sources.jar!/com/mongodb/ReflectionDBObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="56" selection-start="906" selection-end="906" vertical-scroll-proportion="0.54077256">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar!/java/io/ByteArrayOutputStream.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="28" selection-start="847" selection-end="847" vertical-scroll-proportion="0.33183858">
+        <state line="10" column="38" selection-start="243" selection-end="243" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteSingleHostPerformanceTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="31" selection-start="747" selection-end="747" vertical-scroll-proportion="0.0">
+        <state line="102" column="52" selection-start="3688" selection-end="3730" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/document/VeryImportantDocument.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/benchmark/AbstractMongoKiller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="24" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0">
+        <state line="20" column="22" selection-start="527" selection-end="527" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/dotkam/WritePerformanceTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/util/SizeTeller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="12" selection-start="1438" selection-end="1438" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="13" column="8" selection-start="288" selection-end="288" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/org/dotkam/ConcurrentWriteMultipleHostPerformanceTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="62" selection-start="1171" selection-end="1171" vertical-scroll-proportion="0.5611511">
-          <folding />
+        <state line="83" column="35" selection-start="3217" selection-end="3217" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1307718153000" expanded="true" signature="3194:3282" placeholder="//..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/runner/MongoKiller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="17" selection-start="213" selection-end="213" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/dotkam/mongodb/benchmark/SingleHostMongoKiller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="8" selection-start="481" selection-end="481" vertical-scroll-proportion="0.7058824">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -850,6 +1088,7 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
+          <last-edited />
           <splitter-proportions>
             <option name="proportions">
               <list>

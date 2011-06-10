@@ -1,0 +1,11 @@
+---
+number_of_documents:     1000000
+
+grid_size:               4
+single_batch_threshold:  1000000
+
+number_of_hosts:         5
+first_host_port:         30000
+
+db_name:                 writePerformanceDumbDb
+collection_name:         vipDocuments
