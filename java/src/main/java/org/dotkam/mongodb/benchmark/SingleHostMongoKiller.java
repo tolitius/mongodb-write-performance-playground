@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.Map;
 
 /**
- * <p> Quick and dirty way to kill a single MongoS / MongoD pair </p>
+ * <p> Quick and dirty way to "be killing" a single MongoS / MongoD pair </p>
  */
 public class SingleHostMongoKiller extends AbstractMongoKiller {
 

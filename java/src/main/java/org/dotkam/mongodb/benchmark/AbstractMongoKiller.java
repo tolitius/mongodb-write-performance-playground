@@ -8,19 +8,23 @@ import org.dotkam.util.SizeTeller;
 import org.springframework.util.StopWatch;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public abstract class AbstractMongoKiller {
-    long numberOfDocuments;
-    int gridSize;
-    int batchThreshold;
-    long uniqueSalt;
+
+    protected long numberOfDocuments = 1000000;
+    protected int gridSize = 1;
+    protected int numberOfHosts = 1;
+    protected int batchThreshold = 1000000;
+    protected long uniqueSalt = new Date().getTime();
 
     MongoSingleHostDocumentWriter documentWriter;
 
     protected void doDestroyTarget() {
 
-        StopWatch timer = new StopWatch("-- MongoDB Insert All With Partitioning [ grid size = " + gridSize + " ] --");
+        StopWatch timer = new StopWatch("-- Killing Mongo with " +
+                "[ grid size = " + gridSize + " / number of hosts = " + numberOfHosts + " ] --");
 
         System.out.println( "working with a document size of " +
                 SizeTeller.tellMeMyApproximateSize(new VeryImportantDocument()) + " bytes" );
@@ -35,6 +39,7 @@ public abstract class AbstractMongoKiller {
             VeryImportantDocument document = new VeryImportantDocument();
 
             document.set_id( i );
+            document.setBusinessId( i % numberOfHosts );
             document.setSalt( uniqueSalt );
 
             documents.add( document );
