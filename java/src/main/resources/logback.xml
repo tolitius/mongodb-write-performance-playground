@@ -6,7 +6,7 @@
         </encoder>
     </appender>
 
-    <logger name="org.dotkam.mongodb" level="trace"/>
+    <logger name="org.dotkam" level="trace"/>
 
     <root level="info">
         <appender-ref ref="STDOUT"/>
