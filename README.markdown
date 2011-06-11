@@ -1,4 +1,4 @@
-# What is "MongoDB Write Performance Playground"? ##
+# What is "MongoDB Write Performance Playground"?
 
 A simple playground where a mongo-java-driver and a mongo-c-driver are used to INSERT X number of "some" records into MongoDB.
 + On a Java side can be run with [MongoKiller](https://github.com/anatoly-polinsky/mongodb-write-performance-playground/blob/master/java/src/main/java/org/dotkam/killer/MongoKiller.java).
@@ -42,7 +42,7 @@ ms     %     Task name
 194278  100%  adding 5200000 number of documents..
 ```
 
-### What is "all this" for..
+## What is "all this" for..
 
 This creation is _meant_ to be "cloned" and changed to reflect what _you_ really need: e.g. change documents, indexes, collections, number of documents, etc..
 
