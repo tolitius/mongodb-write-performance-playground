@@ -1,15 +1,46 @@
 # What is "MongoDB Write Performance Playground"? ##
 
 A simple playground where a mongo-java-driver and a mongo-c-driver are used to INSERT X number of "some" records into MongoDB.
++ On a Java side can be run with [MongoKiller](https://github.com/anatoly-polinsky/mongodb-write-performance-playground/blob/master/java/src/main/java/org/dotkam/killer/MongoKiller.java).
++ Relies on [mongo_killer.yaml](https://github.com/anatoly-polinsky/mongodb-write-performance-playground/blob/master/java/src/main/resources/mongo_killer.yaml) config by default, but a custom config may be provided though a "--config" parameter
++ Can be run against a single MongoDB instance (MongoS or MongoD), as well as multiple MongoDB instances by specifying "--multiple-hosts" parameter
 
 ### Things tried here:
 
 + Inserting documents One By One
 + Inserting documents All At Once
 + Partitioning documents for a given number of threads, and inserting them in parallel ( ThreadPoolExecutor )
-+ Partitioning documents for a given number of threads... Inserting to MongoS having multiple Shards
-+ Partitioning documents for a given number of threads... Inserting to multiple Mongo Daemons
-+ Pre-splitting chunks for a known number of threads, so the shard key is effective [ tags: partitioning, sharding ]
++ Partitioning documents for a given number of threads... Inserting to MongoS having multiple Shards ( Shard cluster )
++ Partitioning documents for a given number of threads... Inserting to multiple MongoDs directly
++ Pre-splitting, moving chunks for a known number of threads, so the shard key is effective [ tags: partitioning, sharding ]
+
+#### Sample MongoKiller run with '--multiple-hosts':
+
+```bash
+loading mongo killer config from: src/main/resources/mongo_killer.yaml
+killing multiple Mongo hosts..
+[{name=localhost, port=30000}, {name=localhost, port=30001}, {name=localhost, port=30002}, {name=localhost, port=30003}]
+Bringing MultipleHostMongoKiller to life with:
+
+     Number Of Documents:   5200000
+     Document Size ~:       643 bytes
+     Grid Size:             4
+     Number Of Hosts:       4
+     Batch Threshold:       1000000
+
+=> sending 1000000 documents down the Mongo pipe
+=> sending 1000000 documents down the Mongo pipe
+=> sending 1000000 documents down the Mongo pipe
+=> sending 1000000 documents down the Mongo pipe
+=> sending 1000000 documents down the Mongo pipe
+=> sending 200000 documents down the Mongo pipe
+
+StopWatch 'Killing Mongo': running time (millis) = 194278
+-----------------------------------------
+ms     %     Task name
+-----------------------------------------
+194278  100%  adding 5200000 number of documents..
+```
 
 ### What is "all this" for..
 
@@ -20,7 +51,7 @@ This creation is _meant_ to be "cloned" and changed to reflect what _you_ really
 ## Mr. C goes first
 
 + Running it on Mac Book Pro i7 2.8 GHz..
-+ Single document has 25 fields and its size is roughly *200* bytes
++ Single document has 25 fields and its size is roughly *320* bytes
 
 ### to compile
 
@@ -127,7 +158,7 @@ inserting 100000 records with a batch size of 50000 => took 0.864108 seconds...
     -----------------------------------------
     09602  100%  adding 1000000 number of documents..
 
-### Current version of MongoDB ( 1.8.1 ) does not provide even distribution over shards
+### Current version of MongoDB ( 1.9.0 ) does not provide even distribution over shards
 
   Unfortunately.
   The way sharding is done, Mongo looks at the chunk size and moves chunks around in async manner.
