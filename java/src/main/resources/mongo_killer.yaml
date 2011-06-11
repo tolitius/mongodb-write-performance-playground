@@ -1,11 +1,18 @@
 ---
-number_of_documents:     1000000
+number_of_documents:     200000
 
 grid_size:               4
 single_batch_threshold:  1000000
 
-number_of_hosts:         5
-first_host_port:         30000
+hosts:
+    - name     : localhost
+      port     : 30000
+    - name     : localhost
+      port     : 30001
+    - name     : localhost
+      port     : 30002
+    - name     : localhost
+      port     : 30003
 
-db_name:                 writePerformanceDumbDb
+db_name:                 killerDb
 collection_name:         vipDocuments
