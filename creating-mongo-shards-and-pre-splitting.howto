@@ -1,43 +1,126 @@
-rm -rf /data/db/a/*
-rm -rf /data/db/b/*
-rm -rf /data/db/c/*
-rm -rf /data/db/d/*
-rm -rf /data/db/e/*
-rm -rf /data/db/f/*
-rm -rf /data/db/g/*
-rm -rf /data/db/config/*
+export PATH=$PATH:~/1/playground/mongo/1.9.0/mongodb-osx-x86_64-1.9.0/bin
 
-./mongod --shardsvr --dbpath /data/db/a --port 10000 > /tmp/sharda.log &
-./mongod --shardsvr --dbpath /data/db/b --port 10001 > /tmp/shardb.log &
-./mongod --shardsvr --dbpath /data/db/c --port 10002 > /tmp/shardc.log &
-./mongod --shardsvr --dbpath /data/db/d --port 10003 > /tmp/shardd.log &
-./mongod --shardsvr --dbpath /data/db/e --port 10004 > /tmp/sharde.log &
-./mongod --shardsvr --dbpath /data/db/f --port 10005 > /tmp/shardf.log &
-./mongod --shardsvr --dbpath /data/db/g --port 10006 > /tmp/shardg.log &
+rm -rf /tmp/log/mongodb/*
+rm -rf /tmp/mongodb/a/*
+rm -rf /tmp/mongodb/b/*
+rm -rf /tmp/mongodb/c/*
+rm -rf /tmp/mongodb/d/*
+rm -rf /tmp/mongodb/e/*
+rm -rf /tmp/mongodb/f/*
+rm -rf /tmp/mongodb/g/*
+rm -rf /tmp/mongodb/h/*
+rm -rf /tmp/mongodb/i/*
+rm -rf /tmp/mongodb/j/*
+rm -rf /tmp/mongodb/k/*
+rm -rf /tmp/mongodb/l/*
+rm -rf /tmp/mongodb/m/*
+rm -rf /tmp/mongodb/n/*
+rm -rf /tmp/mongodb/o/*
+rm -rf /tmp/mongodb/config/*
 
-./mongod --configsvr --dbpath /data/db/config --port 20000 > /tmp/configdb.log &
-./mongos --configdb localhost:20000 > /tmp/mongos.log &
+mkdir -p /tmp/log/mongodb
+mkdir -p /tmp/mongodb/a
+mkdir -p /tmp/mongodb/b
+mkdir -p /tmp/mongodb/c
+mkdir -p /tmp/mongodb/d
+mkdir -p /tmp/mongodb/e
+mkdir -p /tmp/mongodb/f
+mkdir -p /tmp/mongodb/g
+mkdir -p /tmp/mongodb/h
+mkdir -p /tmp/mongodb/i
+mkdir -p /tmp/mongodb/j
+mkdir -p /tmp/mongodb/k
+mkdir -p /tmp/mongodb/l
+mkdir -p /tmp/mongodb/m
+mkdir -p /tmp/mongodb/n
+mkdir -p /tmp/mongodb/o
+mkdir -p /tmp/mongodb/config
 
-use writePerformanceDumbDb
+mongod --shardsvr --dbpath /tmp/mongodb/a --port 10000 > /tmp/log/mongodb/sharda.log &
+mongod --shardsvr --dbpath /tmp/mongodb/b --port 10001 > /tmp/log/mongodb/shardb.log &
+mongod --shardsvr --dbpath /tmp/mongodb/c --port 10002 > /tmp/log/mongodb/shardc.log &
+mongod --shardsvr --dbpath /tmp/mongodb/d --port 10003 > /tmp/log/mongodb/shardd.log &
+mongod --shardsvr --dbpath /tmp/mongodb/e --port 10004 > /tmp/log/mongodb/sharde.log &
+mongod --shardsvr --dbpath /tmp/mongodb/f --port 10005 > /tmp/log/mongodb/shardf.log &
+mongod --shardsvr --dbpath /tmp/mongodb/g --port 10006 > /tmp/log/mongodb/shardg.log &
+mongod --shardsvr --dbpath /tmp/mongodb/h --port 10007 > /tmp/log/mongodb/shardh.log &
+mongod --shardsvr --dbpath /tmp/mongodb/i --port 10008 > /tmp/log/mongodb/shardi.log &
+mongod --shardsvr --dbpath /tmp/mongodb/j --port 10009 > /tmp/log/mongodb/shardj.log &
+mongod --shardsvr --dbpath /tmp/mongodb/k --port 10010 > /tmp/log/mongodb/shardk.log &
+mongod --shardsvr --dbpath /tmp/mongodb/l --port 10011 > /tmp/log/mongodb/shardl.log &
+mongod --shardsvr --dbpath /tmp/mongodb/m --port 10012 > /tmp/log/mongodb/shardm.log &
+mongod --shardsvr --dbpath /tmp/mongodb/n --port 10013 > /tmp/log/mongodb/shardn.log &
+mongod --shardsvr --dbpath /tmp/mongodb/o --port 10014 > /tmp/log/mongodb/shardo.log &
+
+mongod --configsvr --dbpath /tmp/mongodb/config --port 20000 > /tmp/log/mongodb/configdb.log &
+
+mongos --port 30000 --configdb localhost:20000 > /tmp/log/mongodb/mongos30000.log &
+mongos --port 30001 --configdb localhost:20000 > /tmp/log/mongodb/mongos30001.log &
+mongos --port 30002 --configdb localhost:20000 > /tmp/log/mongodb/mongos30002.log &
+mongos --port 30003 --configdb localhost:20000 > /tmp/log/mongodb/mongos30003.log &
+mongos --port 30004 --configdb localhost:20000 > /tmp/log/mongodb/mongos30004.log &
+mongos --port 30005 --configdb localhost:20000 > /tmp/log/mongodb/mongos30005.log &
+mongos --port 30006 --configdb localhost:20000 > /tmp/log/mongodb/mongos30006.log &
+mongos --port 30007 --configdb localhost:20000 > /tmp/log/mongodb/mongos30007.log &
+mongos --port 30008 --configdb localhost:20000 > /tmp/log/mongodb/mongos30008.log &
+mongos --port 30009 --configdb localhost:20000 > /tmp/log/mongodb/mongos30009.log &
+mongos --port 30010 --configdb localhost:20000 > /tmp/log/mongodb/mongos30010.log &
+mongos --port 30011 --configdb localhost:20000 > /tmp/log/mongodb/mongos30011.log &
+mongos --port 30012 --configdb localhost:20000 > /tmp/log/mongodb/mongos30012.log &
+mongos --port 30013 --configdb localhost:20000 > /tmp/log/mongodb/mongos30013.log &
+mongos --port 30014 --configdb localhost:20000 > /tmp/log/mongodb/mongos30014.log &
+
+use killerDb
 use admin
 
-db.runCommand( { addshard : "localhost:10000" } )
-db.runCommand( { addshard : "localhost:10001" } )
-db.runCommand( { addshard : "localhost:10002" } )
-db.runCommand( { addshard : "localhost:10003" } )
-db.runCommand( { addshard : "localhost:10004" } )
-db.runCommand( { addshard : "localhost:10005" } )
-db.runCommand( { addshard : "localhost:10006" } )
+db.runCommand( { addshard : "localhost:10000" } );
+db.runCommand( { addshard : "localhost:10001" } );
+db.runCommand( { addshard : "localhost:10002" } );
+db.runCommand( { addshard : "localhost:10003" } );
+db.runCommand( { addshard : "localhost:10004" } );
+db.runCommand( { addshard : "localhost:10005" } );
+db.runCommand( { addshard : "localhost:10006" } );
+db.runCommand( { addshard : "localhost:10007" } );
+db.runCommand( { addshard : "localhost:10008" } );
+db.runCommand( { addshard : "localhost:10009" } );
+db.runCommand( { addshard : "localhost:10010" } );
+db.runCommand( { addshard : "localhost:10011" } );
+db.runCommand( { addshard : "localhost:10012" } );
+db.runCommand( { addshard : "localhost:10013" } );
+db.runCommand( { addshard : "localhost:10014" } );
 
-db.runCommand( { enablesharding : "writePerformanceDumbDb" } ) 
+db.runCommand( { enablesharding : "killerDb" } ) 
+db.runCommand( { shardcollection : "killerDb.vipDocuments", key : {BusinessId : 1} } )
 
-db.runCommand( { shardcollection : "writePerformanceDumbDb.vipRecords", key : {BusinessId : 1} } )
+db.runCommand( { split : "killerDb.vipDocuments" , middle : { BusinessId : NumberLong( 0 ) } } )
+db.runCommand( { split : "killerDb.vipDocuments" , middle : { BusinessId : NumberLong( 1 ) } } )
+db.runCommand( { split : "killerDb.vipDocuments" , middle : { BusinessId : NumberLong( 2 ) } } )
+db.runCommand( { split : "killerDb.vipDocuments" , middle : { BusinessId : NumberLong( 3 ) } } )
+db.runCommand( { split : "killerDb.vipDocuments" , middle : { BusinessId : NumberLong( 4 ) } } )
+db.runCommand( { split : "killerDb.vipDocuments" , middle : { BusinessId : NumberLong( 5 ) } } )
+db.runCommand( { split : "killerDb.vipDocuments" , middle : { BusinessId : NumberLong( 6 ) } } )
+db.runCommand( { split : "killerDb.vipDocuments" , middle : { BusinessId : NumberLong( 7 ) } } )
+db.runCommand( { split : "killerDb.vipDocuments" , middle : { BusinessId : NumberLong( 8 ) } } )
+db.runCommand( { split : "killerDb.vipDocuments" , middle : { BusinessId : NumberLong( 9 ) } } )
+db.runCommand( { split : "killerDb.vipDocuments" , middle : { BusinessId : NumberLong( 10 ) } } )
+db.runCommand( { split : "killerDb.vipDocuments" , middle : { BusinessId : NumberLong( 11 ) } } )
+db.runCommand( { split : "killerDb.vipDocuments" , middle : { BusinessId : NumberLong( 12 ) } } )
+db.runCommand( { split : "killerDb.vipDocuments" , middle : { BusinessId : NumberLong( 13 ) } } )
+db.runCommand( { split : "killerDb.vipDocuments" , middle : { BusinessId : NumberLong( 14 ) } } )
 
-db.runCommand( { split : "writePerformanceDumbDb.vipRecords" , middle : { BusinessId : NumberLong( 143000 ) } } )
-db.runCommand( { split : "writePerformanceDumbDb.vipRecords" , middle : { BusinessId : NumberLong( 286000 ) } } )
-db.runCommand( { split : "writePerformanceDumbDb.vipRecords" , middle : { BusinessId : NumberLong( 429000 ) } } )
-db.runCommand( { split : "writePerformanceDumbDb.vipRecords" , middle : { BusinessId : NumberLong( 572000 ) } } )
-db.runCommand( { split : "writePerformanceDumbDb.vipRecords" , middle : { BusinessId : NumberLong( 715000 ) } } )
-db.runCommand( { split : "writePerformanceDumbDb.vipRecords" , middle : { BusinessId : NumberLong( 858000 ) } } )
-db.runCommand( { split : "writePerformanceDumbDb.vipRecords" , middle : { BusinessId : NumberLong( 143000 ) } } )
+db.runCommand( { moveChunk : "killerDb.vipDocuments" , find : { BusinessId : 0 } , to : "shard0000" } );
+db.runCommand( { moveChunk : "killerDb.vipDocuments" , find : { BusinessId : 1 } , to : "shard0001" } );
+db.runCommand( { moveChunk : "killerDb.vipDocuments" , find : { BusinessId : 2 } , to : "shard0002" } );
+db.runCommand( { moveChunk : "killerDb.vipDocuments" , find : { BusinessId : 3 } , to : "shard0003" } );
+db.runCommand( { moveChunk : "killerDb.vipDocuments" , find : { BusinessId : 4 } , to : "shard0004" } );
+db.runCommand( { moveChunk : "killerDb.vipDocuments" , find : { BusinessId : 5 } , to : "shard0005" } );
+db.runCommand( { moveChunk : "killerDb.vipDocuments" , find : { BusinessId : 6 } , to : "shard0006" } );
+db.runCommand( { moveChunk : "killerDb.vipDocuments" , find : { BusinessId : 7 } , to : "shard0007" } );
+db.runCommand( { moveChunk : "killerDb.vipDocuments" , find : { BusinessId : 8 } , to : "shard0008" } );
+db.runCommand( { moveChunk : "killerDb.vipDocuments" , find : { BusinessId : 9 } , to : "shard0009" } );
+db.runCommand( { moveChunk : "killerDb.vipDocuments" , find : { BusinessId : 10 } , to : "shard0010" } );
+db.runCommand( { moveChunk : "killerDb.vipDocuments" , find : { BusinessId : 11 } , to : "shard0011" } );
+db.runCommand( { moveChunk : "killerDb.vipDocuments" , find : { BusinessId : 12 } , to : "shard0012" } );
+db.runCommand( { moveChunk : "killerDb.vipDocuments" , find : { BusinessId : 13 } , to : "shard0013" } );
+db.runCommand( { moveChunk : "killerDb.vipDocuments" , find : { BusinessId : 14 } , to : "shard0014" } );
 
