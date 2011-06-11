@@ -5,6 +5,8 @@ import com.mongodb.DBObject;
 import org.dotkam.document.VeryImportantDocument;
 import org.dotkam.mongodb.concurrent.MongoSingleHostDocumentWriter;
 import org.dotkam.util.SizeTeller;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.StopWatch;
 
 import java.util.ArrayList;
@@ -12,6 +14,8 @@ import java.util.Date;
 import java.util.List;
 
 public abstract class AbstractMongoKiller {
+
+    private final static Logger logger = LoggerFactory.getLogger( AbstractMongoKiller.class );
 
     protected long numberOfDocuments = 1000000;
     protected int gridSize = 1;
@@ -23,11 +27,16 @@ public abstract class AbstractMongoKiller {
 
     protected void doDestroyTarget() {
 
-        StopWatch timer = new StopWatch("-- Killing Mongo with " +
-                "[ grid size = " + gridSize + " / number of hosts = " + numberOfHosts + " ] --");
+        StopWatch timer = new StopWatch( "Killing Mongo" );
 
-        System.out.println( "working with a document size of " +
-                SizeTeller.tellMeMyApproximateSize(new VeryImportantDocument()) + " bytes" );
+        logger.trace( "Bringing " + this.getClass().getSimpleName() + " to life with:\n\n" +
+                "\t Number Of Documents:\t" + this.numberOfDocuments +
+                "\n\t Document Size ~:\t\t" + SizeTeller.tellMeMyApproximateSize(
+                                                                            new VeryImportantDocument() ) + " bytes" +
+                "\n\t Grid Size:\t\t\t\t" + this.gridSize +
+                "\n\t Number Of Hosts:\t\t" + this.numberOfHosts +
+                "\n\t Batch Threshold:\t\t" + this.batchThreshold +  "\n"
+        );
 
         timer.start( "adding " + numberOfDocuments + " number of documents.." );
 
@@ -46,7 +55,7 @@ public abstract class AbstractMongoKiller {
 
             if ( ( i + 1 ) % batchThreshold == 0 ) {
 
-                System.out.println( "=> sending " + batchThreshold + " documents down the Mongo pipe" );
+                logger.debug( "=> sending " + batchThreshold + " documents down the Mongo pipe" );
                 documentWriter.write( documents );
                 documents = new ArrayList<DBObject>();
 
@@ -55,11 +64,11 @@ public abstract class AbstractMongoKiller {
 
         // if we still have a remainder of documents..
         if ( ( i ) % batchThreshold != 0 ) {
-            System.out.println( "=> sending the remainder: " + documents.size() + " documents down the Mongo pipe" );
+            logger.debug( "=> sending " + documents.size() + " documents down the Mongo pipe" );
             documentWriter.write( documents );
         }
 
         timer.stop();
-        System.out.println( timer.prettyPrint() );
+        logger.info( "\n" + timer.prettyPrint() );
     }
 }

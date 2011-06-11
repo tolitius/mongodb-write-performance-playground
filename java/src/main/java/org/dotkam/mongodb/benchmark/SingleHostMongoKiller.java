@@ -5,6 +5,8 @@ import org.dotkam.document.VeryImportantDocument;
 import org.dotkam.mongodb.concurrent.MongoSingleHostDocumentWriter;
 import org.dotkam.mongodb.datasource.CollectionDataSource;
 import org.dotkam.mongodb.partition.GridSizeDocumentPartitioner;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Date;
 import java.util.Map;
@@ -14,11 +16,13 @@ import java.util.Map;
  */
 public class SingleHostMongoKiller extends AbstractMongoKiller {
 
+    private final static Logger logger = LoggerFactory.getLogger( SingleHostMongoKiller.class );
+
     public SingleHostMongoKiller( Map<String, Object> config ) {
 
         super.numberOfDocuments = Long.valueOf( config.get( "number_of_documents" ).toString() );
         super.gridSize = Integer.valueOf( config.get("grid_size").toString() );
-        super.batchThreshold = Integer.valueOf( config.get( "single_batch_threshold" ).toString() );
+        super.batchThreshold = Integer.valueOf(config.get("single_batch_threshold").toString());
         super.uniqueSalt = new Date().getTime();
 
         CollectionDataSource dataSource =

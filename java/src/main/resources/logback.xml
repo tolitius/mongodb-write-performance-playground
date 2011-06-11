@@ -1,0 +1,16 @@
+<configuration>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.dotkam.mongodb" level="trace"/>
+
+    <root level="info">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+
+</configuration>
