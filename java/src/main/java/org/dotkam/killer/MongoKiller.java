@@ -1,5 +1,8 @@
-package org.dotkam.runner;
+package org.dotkam.killer;
 
+import joptsimple.OptionParser;
+import joptsimple.OptionSet;
+import org.dotkam.mongodb.benchmark.MultipleHostMongoKiller;
 import org.dotkam.mongodb.benchmark.SingleHostMongoKiller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,14 +23,27 @@ public class MongoKiller {
 
         String configLocation = DEFAULT_CONFIG_LOCATION;
 
-        if ( args.length == 1 ) {
-            configLocation = args[0];
+        OptionParser parser = new OptionParser();
+        parser.accepts( "config" ).withRequiredArg();
+        parser.accepts( "multiple-hosts" );
+
+        OptionSet options = parser.parse( args );
+
+        if ( options.has( "config" ) ) {
+            configLocation = options.valueOf( "config" ).toString();
         }
 
         logger.trace( "loading mongo killer config from: " + configLocation );
         config = loadConfig( configLocation );
 
-        new SingleHostMongoKiller( config ).destroyTarget();
+        if ( options.has( "multiple-hosts" ) ) {
+            logger.trace( "killing multiple Mongo hosts.." );
+            new MultipleHostMongoKiller( config ).destroyTarget();
+        }
+        else {
+            logger.trace( "killing a single Mongo host ( localhost:27017 ).." );
+            new SingleHostMongoKiller( config ).destroyTarget();
+        }
 
         System.exit( 0 );
     }

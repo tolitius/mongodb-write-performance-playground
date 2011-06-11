@@ -21,8 +21,8 @@ public class SingleHostMongoKiller extends AbstractMongoKiller {
     public SingleHostMongoKiller( Map<String, Object> config ) {
 
         super.numberOfDocuments = Long.valueOf( config.get( "number_of_documents" ).toString() );
-        super.gridSize = Integer.valueOf( config.get("grid_size").toString() );
-        super.batchThreshold = Integer.valueOf(config.get("single_batch_threshold").toString());
+        super.gridSize = Integer.valueOf( config.get( "grid_size" ).toString() );
+        super.batchThreshold = Integer.valueOf( config.get( "single_batch_threshold" ).toString() );
         super.uniqueSalt = new Date().getTime();
 
         CollectionDataSource dataSource =

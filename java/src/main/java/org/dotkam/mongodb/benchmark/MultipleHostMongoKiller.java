@@ -44,7 +44,7 @@ public class MultipleHostMongoKiller extends AbstractMongoKiller {
 
         List<CollectionDataSource> multipleHosts = new ArrayList<CollectionDataSource>();
 
-        System.out.println( config.get("hosts").toString() );
+        logger.trace( config.get("hosts").toString() );
         List<Map<String, Object>> hosts = ( List ) config.get( "hosts" );
         super.numberOfHosts = hosts.size();
 
