@@ -1,6 +1,7 @@
 # What is "MongoDB Write Performance Playground"?
 
 A simple playground where a mongo-java-driver and a mongo-c-driver are used to INSERT X number of "some" records into MongoDB.
+
 + On a Java side can be run with [MongoKiller](https://github.com/anatoly-polinsky/mongodb-write-performance-playground/blob/master/java/src/main/java/org/dotkam/killer/MongoKiller.java).
 + Relies on [mongo_killer.yaml](https://github.com/anatoly-polinsky/mongodb-write-performance-playground/blob/master/java/src/main/resources/mongo_killer.yaml) config by default, but a custom config may be provided though a "--config" parameter
 + Can be run against a single MongoDB instance (MongoS or MongoD), as well as multiple MongoDB instances by specifying "--multiple-hosts" parameter
