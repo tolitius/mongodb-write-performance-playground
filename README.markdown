@@ -37,11 +37,11 @@ Bringing MultipleHostMongoKiller to life with:
 => sending 1000000 documents down the Mongo pipe
 => sending 200000 documents down the Mongo pipe
 
-StopWatch 'Killing Mongo': running time (millis) = 194278
+StopWatch 'Killing Mongo': running time (millis) = 70427
 -----------------------------------------
 ms     %     Task name
 -----------------------------------------
-194278  100%  adding 5200000 number of documents..
+70427  100%  adding 5200000 number of documents..
 ```
 
 ## What is "all this" for..
