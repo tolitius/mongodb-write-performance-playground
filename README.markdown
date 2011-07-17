@@ -20,7 +20,7 @@ If plans are to work with "Big Data", which (its index) most likely will not fit
 ###CONCLUSION: 
 In a lightweght CRUD Webapp, which does not really need a high throughput, does not need to keep GB/TB of data, and might benefit from a document oriented schemaless data store, MongoDB would be a perfect choice: very nice query language, fun to work with. In case "Big Data" and high throughput are needed, I would recommend looking elsewhere.
 
-# Things tried here:
+# Things Tried Here:
 
 + Inserting documents One By One
 + Inserting documents All At Once
