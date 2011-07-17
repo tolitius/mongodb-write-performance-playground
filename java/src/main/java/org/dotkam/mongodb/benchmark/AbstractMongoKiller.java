@@ -55,7 +55,7 @@ public abstract class AbstractMongoKiller {
 
             if ( ( i + 1 ) % batchThreshold == 0 ) {
 
-                logger.debug("=> sent " + ( i + 1 ) + " documents down the Mongo pipe");
+                logger.debug( "=> sent " + ( i + 1 ) + " documents down the Mongo pipe" );
                 documentWriter.write( documents );
                 documents = new ArrayList<DBObject>();
 
