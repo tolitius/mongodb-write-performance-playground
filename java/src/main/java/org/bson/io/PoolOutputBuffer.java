@@ -5,6 +5,9 @@ package org.bson.io;
 import org.bson.*;
 import org.bson.io.*;
 import org.bson.util.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.util.StopWatch;
 
 import java.io.*;
 import java.util.*;
@@ -12,6 +15,7 @@ import java.util.*;
 public class PoolOutputBuffer extends OutputBuffer {
     
     public static final int BUF_SIZE = 1024 * 16;
+    private final static Logger logger = LoggerFactory.getLogger( PoolOutputBuffer.class );
 
     public PoolOutputBuffer(){
         reset();
@@ -113,7 +117,17 @@ public class PoolOutputBuffer extends OutputBuffer {
 
             //System.out.println( "writing " + amt + " bytes" );
 
+            StopWatch timer = new StopWatch( "raw socket I/O" );
+            timer.start("wrote " + amt + " bytes out..");
+
             out.write( b , 0 , amt );
+
+            timer.stop();
+            // report anything that took over a second to write ( most of the time it takes microseconds )
+            if ( timer.getTotalTimeMillis() > 1000 ) {
+                logger.trace( timer.prettyPrint() );
+            }
+
             total += amt;
         }
 
