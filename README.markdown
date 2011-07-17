@@ -17,6 +17,11 @@ All these results are for a "Fire and Forget" writing mode, where WriteConcern i
 ###HOWEVER II: 
 If plans are to work with "Big Data", which (its index) most likely will not fit into RAM, MongoDB performance is unpredictably bad, and mostly averages to low hundreds ( 200 / 300 ) documents per seconds. More about this topic here: [NoRAM DB => “If It Does Not Fit in RAM, I Will Quietly Die For You”](http://www.dotkam.com/2011/07/06/noram-db-if-it-does-not-fit-in-ram-i-will-quietly-die-for-you/)
 
+###HOWEVER III:
+Since Mongo documents are BSON, the size of a document greatly depends on the key name lengths. For example, a key with a name of "firstName" will take 9 bytes JUST for the key name. This creates two immediate disadvantages:
++ A lot more needs to be pushed through the socket => decreases performance and/or increases cost to maintain a decent performance
++ Need a lot more storage => that TB of documents will only really have a fraction of "useful" data, everything else are keys, mostly duplicated accross documents
+
 ###CONCLUSION: 
 In a lightweght CRUD Webapp, which does not really need a high throughput, does not need to keep GB/TB of data, and might benefit from a document oriented schemaless data store, MongoDB would be a perfect choice: very nice query language, fun to work with. In case "Big Data" and high throughput are needed, I would recommend looking elsewhere.
 
@@ -101,9 +106,27 @@ $ ./batch_insert 100000 50000
 inserting 100000 records with a batch size of 50000 => took 0.864108 seconds...
 ```
 
+## 10,000,000 ( Ten Million ) records 
+
+```bash
+$ ./batch_insert 10000000 100000
+
+inserting 10000000 records with a batch size of 100000 => took 173.898534 seconds...
+```
+
+## 100,000,000 ( One Hundred Million ) records 
+
+```bash
+$ ./batch_insert 100000000 100000
+
+inserting 100000000 records with a batch size of 100000 => took 2346.321261 seconds...
+```
+
+NOTE(!) C Driver is still in an alpha state where it does not support things like WriteConcern, replica sets, etc..
+
 ## Now Ms. Java..
 
-+ Running it on Mac Book Pro i7 2.8 GHz..
++ Running it on Mac Book Pro i7 2.8 GHz.. => NOTE: Same trends ( including a "dead end slow down" ) are observed when running on a 12 node Linux cluster
 + Single document has 30 fields, and its size is *665* bytes
 + A 1,000,000 documents is hungry, so: "-Xms512m -Xmx1024m -XX:MaxPermSize=384m -Xss128k"
 
@@ -172,6 +195,14 @@ inserting 100000 records with a batch size of 50000 => took 0.864108 seconds...
     ms     %     Task name
     -----------------------------------------
     09602  100%  adding 1000000 number of documents..
+
+## 100,000,000 ( One Hundred Million ) records
+
+    StopWatch '-- MongoDB Insert All With Partitioning [ grid size = 4 ] --': running time (millis) = 3025403
+    -----------------------------------------
+    ms     %     Task name
+    -----------------------------------------
+    3025403  100%  adding 100000000 number of documents..
 
 ### Current version of MongoDB ( 1.9.0 ) does not provide even distribution over shards
 
