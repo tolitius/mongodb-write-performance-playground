@@ -19,6 +19,7 @@ If plans are to work with "Big Data", which (its index) most likely will not fit
 
 ###HOWEVER III:
 Since Mongo documents are BSON, the size of a document greatly depends on the key name lengths. For example, a key with a name of "firstName" will take 9 bytes JUST for the key name. This creates two immediate disadvantages:
+
 + A lot more needs to be pushed through the socket => decreases performance and/or increases cost to maintain a decent performance
 + Need a lot more storage => that TB of documents will only really have a fraction of "useful" data, everything else are keys, mostly duplicated accross documents
 
