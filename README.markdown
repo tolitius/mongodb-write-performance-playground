@@ -48,6 +48,16 @@ ms     %     Task name
 
 This creation is _meant_ to be "cloned" and changed to reflect what _you_ really need: e.g. change documents, indexes, collections, number of documents, etc..
 
+# NOTE(!)
+
+    The results below are the best benchmarks that could be squeezed out of Mongo on a given hardware. 
+
+    HOWEVER: All these results are for a "Fire and Forget" writing mode, where WriteConcern is set to NORMAL (which is a default setting btw). Which means the data was pushed through the socket and "hopefully" got persisted. In case the WriteConcern is set to something more durable e.g. SAFE / FSYNC_SAFE, the performace goes down really fast.
+
+    HOWEVER II: If plans are to work with "Big Data", which (its index) most likely will not fit into RAM, MongoDB performance is unpredictably bad, and mostly averages to low hundreds ( 200 / 300 ) documents per seconds. More about this topic here: [NoRAM DB => “If It Does Not Fit in RAM, I Will Quietly Die For You”](http://www.dotkam.com/2011/07/06/noram-db-if-it-does-not-fit-in-ram-i-will-quietly-die-for-you/)
+
+    CONCLUSION: In a lightweght CRUD Webapp, which does not really need a high throughput, does not need to keep GB/TB of data, and might benefit from a document oriented schemaless data store, MongoDB would be a perfect choice: very nice query language, fun to work with. In case "Big Data" and high throughput are needed, I would recommend looking elsewhere.
+
 # "Show Me The Money"
 
 ## Mr. C goes first
@@ -175,7 +185,3 @@ inserting 100000 records with a batch size of 50000 => took 0.864108 seconds...
 + number of documents / grid size [ where in this example grid size = number of threads ]
 + number of documents / grid size Evenly Distributed over multiple MongoDB Daemons [ this.nextCollectionHost % collectionDataSources.size() ]
 
-### The numbers above can be surely improved
-
- By having more RAM, having multiple physical clients / servers, using a C driver, etc..
- But the whole idea is to start somewhere...
