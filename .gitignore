@@ -1,0 +1,14 @@
+.idea/*
+*.swp
+*.class
+*.ipr
+*.iws
+.gradle
+*.jar
+.project
+.settings
+target/*
+build/*
+pi/build/*
+pi/out/*
+!gradle-wrapper.jar
