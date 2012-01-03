@@ -205,7 +205,7 @@ NOTE(!) C Driver is still in an alpha state where it does not support things lik
     -----------------------------------------
     3025403  100%  adding 100000000 number of documents..
 
-### Current version of MongoDB ( 1.9.0 ) does not provide even distribution over shards
+### Current version of MongoDB ( 2.0.2 ) does not provide even distribution over shards
 
   Unfortunately.
   The way sharding is done, Mongo looks at the chunk size and moves chunks around in async manner.
