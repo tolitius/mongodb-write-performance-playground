@@ -22,7 +22,7 @@ public class CollectionDataSource {
             this.dbCollection.remove( new BasicDBObject() );
 
             // forcing '_id' index to pre load the index in memory during a "cold" start
-            this.dbCollection.ensureIndex( new BasicDBObject( "_id", 1 ) );
+            this.dbCollection.createIndex( new BasicDBObject( "_id", 1 ) );
         }
         catch ( UnknownHostException uhe ) {
             throw new RuntimeException( uhe );

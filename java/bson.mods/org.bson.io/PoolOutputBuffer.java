@@ -2,15 +2,9 @@
 
 package org.bson.io;
 
-import org.bson.*;
-import org.bson.io.*;
-import org.bson.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StopWatch;
-
-import java.io.*;
-import java.util.*;
 
 public class PoolOutputBuffer extends OutputBuffer {
     
