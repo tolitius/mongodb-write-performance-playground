@@ -2,8 +2,8 @@
 
 A simple playground where a mongo-java-driver and a mongo-c-driver are used to INSERT X number of "some" records into MongoDB.
 
-+ On a Java side can be run with [MongoKiller](https://github.com/anatoly-polinsky/mongodb-write-performance-playground/blob/master/java/src/main/java/org/dotkam/killer/MongoKiller.java)
-+ Relies on [mongo_killer.yaml](https://github.com/anatoly-polinsky/mongodb-write-performance-playground/blob/master/java/src/main/resources/mongo_killer.yaml) config by default, but a custom config may be provided though a "--config" parameter
++ On a Java side can be run with [MongoKiller](https://github.com/tolitius/mongodb-write-performance-playground/blob/master/java/src/main/java/org/dotkam/killer/MongoKiller.java)
++ Relies on [mongo_killer.yaml](https://github.com/tolitius/mongodb-write-performance-playground/blob/master/java/src/main/resources/mongo_killer.yaml) config by default, but a custom config may be provided though a "--config" parameter
 + Can be run against a single MongoDB instance (MongoS or MongoD), as well as multiple MongoDB instances by specifying hosts in YAML config and running with a "--multiple-hosts" parameter
 + When running against multiple hosts, batches of documents ( = numberOfDocuments / gridSize ) are sent to hosts in a Round Robin fashion
 
@@ -213,7 +213,7 @@ NOTE(!) C Driver is still in an alpha state where it does not support things lik
   Hence inserts are still "sequential".
   JIRA that "kind of" addresses that: https://jira.mongodb.org/browse/SERVER-939
   
-  Even if chunks are 'pre-split' for a known number of shards / threads, INSERTing speed is way ( at least 3 times ) slower than a manual even distribution with [MongoMultipleHostDocumentWriter.java](https://github.com/anatoly-polinsky/mongodb-write-performance-playground/blob/master/java/src/main/java/org/dotkam/mongodb/concurrent/MongoMultipleHostDocumentWriter.java)
+  Even if chunks are 'pre-split' for a known number of shards / threads, INSERTing speed is way ( at least 3 times ) slower than a manual even distribution with [MongoMultipleHostDocumentWriter.java](https://github.com/tolitius/mongodb-write-performance-playground/blob/master/java/src/main/java/org/dotkam/mongodb/concurrent/MongoMultipleHostDocumentWriter.java)
 
 ### Hence real time Even Distribution is needed. Which is done via manual partitioning by:
 
