@@ -1,4 +1,4 @@
-# What is "MongoDB Write Performance Playground"?
+# What is it?
 
 A simple playground where a mongo-java-driver and a mongo-c-driver are used to INSERT X number of "some" records into MongoDB.
 
@@ -205,7 +205,7 @@ NOTE(!) C Driver is still in an alpha state where it does not support things lik
     -----------------------------------------
     3025403  100%  adding 100000000 number of documents..
 
-### Current version of MongoDB ( 2.0.2 ) does not provide even distribution over shards
+### Current version of MongoDB ( 2.6.5 ) does not provide even distribution over shards
 
   Unfortunately.
   The way sharding is done, Mongo looks at the chunk size and moves chunks around in async manner.
