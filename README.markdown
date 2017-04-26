@@ -11,19 +11,19 @@ A simple playground where a mongo-java-driver and a mongo-c-driver are used to I
 
 The results below are the best benchmarks that could be squeezed out of Mongo on a given hardware. 
 
-###HOWEVER: 
+### HOWEVER: 
 All these results are for a "Fire and Forget" writing mode, where WriteConcern is set to NORMAL (which is a default setting btw). Which means the data was pushed through the socket and "hopefully" got persisted. In case the WriteConcern is set to something more durable e.g. SAFE / FSYNC_SAFE, the performace goes down really fast.
 
-###HOWEVER II: 
+### HOWEVER II: 
 If plans are to work with "Big Data", which (its index) most likely will not fit into RAM, MongoDB performance is unpredictably bad, and mostly averages to low hundreds ( 200 / 300 ) documents per seconds. More about this topic here: [NoRAM DB => “If It Does Not Fit in RAM, I Will Quietly Die For You”](http://www.dotkam.com/2011/07/06/noram-db-if-it-does-not-fit-in-ram-i-will-quietly-die-for-you/)
 
-###HOWEVER III:
+### HOWEVER III:
 Since Mongo documents are BSON, the size of a document greatly depends on the key name lengths. For example, a key with a name of "firstName" will take 9 bytes JUST for the key name. This creates two immediate disadvantages:
 
 + A lot more needs to be pushed through the socket => decreases performance and/or increases cost to maintain a decent performance
 + Need a lot more storage => that TB of documents will only really have a fraction of "useful" data, everything else are keys, mostly duplicated accross documents
 
-###CONCLUSION: 
+### CONCLUSION: 
 In a lightweght CRUD Webapp, which does not really need a high throughput, does not need to keep GB/TB of data, and might benefit from a document oriented schemaless data store, MongoDB would be a perfect choice: very nice query language, fun to work with. In case "Big Data" and high throughput are needed, I would recommend looking elsewhere.
 
 # Things Tried Here:
@@ -205,7 +205,7 @@ NOTE(!) C Driver is still in an alpha state where it does not support things lik
     -----------------------------------------
     3025403  100%  adding 100000000 number of documents..
 
-### Current version of MongoDB ( 2.6.5 ) does not provide even distribution over shards
+### Current version of MongoDB does not provide even distribution over shards
 
   Unfortunately.
   The way sharding is done, Mongo looks at the chunk size and moves chunks around in async manner.
