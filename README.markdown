@@ -1,13 +1,15 @@
+> :zap: for `TL;DR` jump to [conclusion](#conclusion)
+
 # What is it?
 
-A simple playground where a mongo-java-driver and a mongo-c-driver are used to INSERT X number of "some" records into MongoDB.
+A place where a mongo-java-driver and a mongo-c-driver are used to INSERT X number of "some" records into MongoDB and see how it performs
 
-+ On a Java side can be run with [MongoKiller](https://github.com/tolitius/mongodb-write-performance-playground/blob/master/java/src/main/java/org/dotkam/killer/MongoKiller.java)
++ Java version is run with [MongoKiller](https://github.com/tolitius/mongodb-write-performance-playground/blob/master/java/src/main/java/org/dotkam/killer/MongoKiller.java)
 + Relies on [mongo_killer.yaml](https://github.com/tolitius/mongodb-write-performance-playground/blob/master/java/src/main/resources/mongo_killer.yaml) config by default, but a custom config may be provided though a "--config" parameter
-+ Can be run against a single MongoDB instance (MongoS or MongoD), as well as multiple MongoDB instances by specifying hosts in YAML config and running with a "--multiple-hosts" parameter
++ Can be run against a single MongoDB instance (MongoS or MongoD), as well as multiple MongoDB instances by specifying hosts in YAML config and running with a "`--multiple-hosts`" parameter
 + When running against multiple hosts, batches of documents ( = numberOfDocuments / gridSize ) are sent to hosts in a Round Robin fashion
 
-# NOTE(!)
+# NOTE(:exclamation:)
 
 The results below are the best benchmarks that could be squeezed out of Mongo on a given hardware. 
 
@@ -23,8 +25,21 @@ Since Mongo documents are BSON, the size of a document greatly depends on the ke
 + A lot more needs to be pushed through the socket => decreases performance and/or increases cost to maintain a decent performance
 + Need a lot more storage => that TB of documents will only really have a fraction of "useful" data, everything else are keys, mostly duplicated accross documents
 
-### CONCLUSION: 
-In a lightweght CRUD Webapp, which does not really need a high throughput, does not need to keep GB/TB of data, and might benefit from a document oriented schemaless data store, MongoDB would be a perfect choice: very nice query language, fun to work with. In case "Big Data" and high throughput are needed, I would recommend looking elsewhere.
+### CONCLUSION
+
+For a lightweght CRUD webapp, which does not really need high throughput, does not store to keep GB/TB of data, and might benefit from a document oriented schemaless data store, MongoDB would be a perfect choice: very nice query language, fun to work with.
+
+:point_down:<br/>
+Mongo database is good at fire and forget workloads.
+
+In case of
+
+* medium to high reliable throughput
+* medium to large datasets
+* stored reliably
+
+There are much better databases.<br/>
+They lose Mongo in marketing, but win in quality, reliability, memory efficiency, throughput and features such as _real_ JOINs and others.
 
 # Things Tried Here:
 
@@ -211,7 +226,7 @@ NOTE(!) C Driver is still in an alpha state where it does not support things lik
   The way sharding is done, Mongo looks at the chunk size and moves chunks around in async manner.
   Which means when X number of records are sent to MongoS it will only use "next" shard in case a chunk size is reached.
   Hence inserts are still "sequential".
-  JIRA that "kind of" addresses that: https://jira.mongodb.org/browse/SERVER-939
+  JIRA that is "kind of" supposed to address that: https://jira.mongodb.org/browse/SERVER-939 which is open since 2009 (!).
   
   Even if chunks are 'pre-split' for a known number of shards / threads, INSERTing speed is way ( at least 3 times ) slower than a manual even distribution with [MongoMultipleHostDocumentWriter.java](https://github.com/tolitius/mongodb-write-performance-playground/blob/master/java/src/main/java/org/dotkam/mongodb/concurrent/MongoMultipleHostDocumentWriter.java)
 
